@@ -13,5 +13,14 @@
     <string name="surname">Surname</string>
     <string name="username">Username</string>
     <string name="confirmPassword">Confirm Password</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <!-- Navigation Bar -->
+    <string name="news">News</string>
+    <string name="calendar">Calendar</string>
+    <string name="forum">Forum</string>
 
 </resources>
