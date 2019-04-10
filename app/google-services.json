@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1062244413227",
+    "firebase_url": "https://sapp-bf599.firebaseio.com",
+    "project_id": "sapp-bf599",
+    "storage_bucket": "sapp-bf599.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1062244413227:android:74ca95b39fd39f86",
+        "android_client_info": {
+          "package_name": "com.main.s_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1062244413227-1c2faje2237j7krbg46qp2jvurar0jr5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.main.s_app",
+            "certificate_hash": "c49291fe88da85502dd85bc2a80db209212970b5"
+          }
+        },
+        {
+          "client_id": "1062244413227-jqpqnb6scgkrdovfi08p42hevj7pip0r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDXTeYTTfnDZ2zTeu7L0jTPObYVnyc2ys"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1062244413227-jqpqnb6scgkrdovfi08p42hevj7pip0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
