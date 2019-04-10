@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">S-APP</string>
+
+    <!-- Login strings -->
+    <string name="email">E-Mail</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="signUp"> Sign Up</string>
+    <string name="or">OR</string>
+
+    <!-- SignUp strings -->
+    <string name="firstName">First Name</string>
+    <string name="surname">Surname</string>
+    <string name="username">Username</string>
+    <string name="confirmPassword">Confirm Password</string>
+
 </resources>
