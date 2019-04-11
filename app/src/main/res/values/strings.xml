@@ -23,4 +23,7 @@
     <string name="calendar">Calendar</string>
     <string name="forum">Forum</string>
 
+    <!-- Logo -->
+    <string name="logo">Logo</string>
+
 </resources>
