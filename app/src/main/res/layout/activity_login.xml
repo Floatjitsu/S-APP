@@ -6,24 +6,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/bgColor"
-    android:paddingTop="70dp"
-    android:paddingStart="30dp"
-    android:paddingEnd="30dp"
     tools:context=".Login">
 
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="407dp"
+        android:layout_height="407dp"
         android:layout_gravity="center"
-        android:src="@mipmap/sapp_logo"
-        android:contentDescription="@string/logo"/>
+        android:contentDescription="@string/logo"
+        android:src="@mipmap/sapp_logo" />
 
     <TextView
         android:layout_marginTop="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/email"
-        android:textColor="@color/textColor"/>
+        android:textColor="@color/textColor"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"/>
 
     <EditText
         android:id="@+id/emailEditText"
@@ -31,14 +30,18 @@
         android:layout_height="wrap_content"
         android:textColor="@color/textColor"
         android:textColorHint="@color/textColor"
-        android:inputType="textEmailAddress"/>
+        android:inputType="textEmailAddress"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="@string/password"
-        android:textColor="@color/textColor"/>
+        android:textColor="@color/textColor"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"/>
 
     <EditText
         android:id="@+id/passwordEditText"
@@ -46,7 +49,9 @@
         android:layout_height="wrap_content"
         android:textColor="@color/textColor"
         android:textColorHint="@color/textColor"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"/>
 
     <Button
         android:id="@+id/loginButton"
@@ -55,7 +60,9 @@
         android:background="@color/colorAccent"
         android:textColor="@color/textColor"
         android:text="@string/login"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -74,7 +81,9 @@
         android:textColor="@color/textColor"
         android:text="@string/signUp"
         android:layout_marginTop="5dp"
-        android:onClick="onSignUp"/>
+        android:onClick="onSignUp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"/>
 
 
 
