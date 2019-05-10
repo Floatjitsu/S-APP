@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignUp"
-    android:background="@color/colorPrimary"
+    android:background="@color/bgColor"
     android:orientation="vertical"
     android:paddingTop="30dp"
     android:paddingStart="30dp"
@@ -113,6 +113,7 @@
         android:text="@string/signUp"
         android:background="@color/colorAccent"
         android:textColor="@color/textColor"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:onClick="onSignUp"/>
 
 </LinearLayout>
