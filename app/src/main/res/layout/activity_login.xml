@@ -9,8 +9,8 @@
     tools:context=".Login">
 
     <ImageView
-        android:layout_width="407dp"
-        android:layout_height="407dp"
+        android:layout_width="400dp"
+        android:layout_height="275dp"
         android:layout_gravity="center"
         android:contentDescription="@string/logo"
         android:src="@mipmap/sapp_logo" />
@@ -25,11 +25,12 @@
         android:layout_marginEnd="30dp"/>
 
     <EditText
-        android:id="@+id/emailEditText"
+        android:id="@+id/emailEditTextLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/textColor"
         android:textColorHint="@color/textColor"
+        android:backgroundTint="@color/colorSecondaryLight"
         android:inputType="textEmailAddress"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"/>
@@ -44,12 +45,13 @@
         android:layout_marginEnd="30dp"/>
 
     <EditText
-        android:id="@+id/passwordEditText"
+        android:id="@+id/passwordEditTextLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/textColor"
         android:textColorHint="@color/textColor"
         android:inputType="textPassword"
+        android:backgroundTint="@color/colorSecondaryLight"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"/>
 
@@ -84,7 +86,5 @@
         android:onClick="onSignUp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"/>
-
-
 
 </LinearLayout>

@@ -7,15 +7,9 @@
     tools:context=".SignUp"
     android:background="@color/bgColor"
     android:orientation="vertical"
-    android:paddingTop="30dp"
+    android:paddingTop="10dp"
     android:paddingStart="30dp"
     android:paddingEnd="30dp">
-
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:src="@mipmap/sapp_logo"/>
 
     <TextView
         android:layout_marginTop="15dp"
@@ -30,6 +24,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/textColor"
         android:textColorHint="@color/textColor"
+        android:backgroundTint="@color/colorSecondaryLight"
         android:inputType="textEmailAddress"/>
 
     <TextView
@@ -45,6 +40,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/textColor"
         android:textColorHint="@color/textColor"
+        android:backgroundTint="@color/colorSecondaryLight"
         android:inputType="textCapSentences"/>
 
     <TextView
@@ -60,6 +56,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/textColor"
         android:textColorHint="@color/textColor"
+        android:backgroundTint="@color/colorSecondaryLight"
         android:inputType="textCapSentences"/>
 
     <TextView
@@ -75,6 +72,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/textColor"
         android:textColorHint="@color/textColor"
+        android:backgroundTint="@color/colorSecondaryLight"
         android:inputType="textCapSentences"/>
 
     <TextView
@@ -90,6 +88,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/textColor"
         android:textColorHint="@color/textColor"
+        android:backgroundTint="@color/colorSecondaryLight"
         android:inputType="textPassword"/>
 
     <TextView
@@ -105,6 +104,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/textColor"
         android:textColorHint="@color/textColor"
+        android:backgroundTint="@color/colorSecondaryLight"
         android:inputType="textPassword"/>
 
     <Button
@@ -113,7 +113,7 @@
         android:text="@string/signUp"
         android:background="@color/colorAccent"
         android:textColor="@color/textColor"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
         android:onClick="onSignUp"/>
 
 </LinearLayout>

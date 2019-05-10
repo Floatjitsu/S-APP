@@ -12,6 +12,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -46,6 +48,13 @@ public class SignUp extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        //Set Username as DisplayName for the new user
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        if(user != null) {
+                            UserProfileChangeRequest changeRequest = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(mUsername.getText().toString()).build();
+                            user.updateProfile(changeRequest);
+                        }
                         createFirebaseUser();
                         startActivity(new Intent(context, MainActivity.class));
 
@@ -61,6 +70,7 @@ public class SignUp extends AppCompatActivity {
                 email = mEmail.getText().toString();
 
         DatabaseReference userRef = mDatabase.getReference("users");
-        userRef.push().setValue(new User(email, firstName, surname, username));
+        User user = new User(email, firstName, surname, username);
+        userRef.push().setValue(user);
     }
 }
