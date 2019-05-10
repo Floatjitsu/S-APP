@@ -13,6 +13,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
 
@@ -25,6 +26,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
+        tryLogin(mAuth.getCurrentUser());
 
         mEmail = findViewById(R.id.emailEditTextLogin);
         mPassword = findViewById(R.id.passwordEditTextLogin);
@@ -53,5 +55,12 @@ public class Login extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    //If the user is still logged in, start MainActivity
+    private void tryLogin(FirebaseUser currentUser) {
+        if(currentUser != null) {
+            startActivity(new Intent(this, MainActivity.class));
+        }
     }
 }

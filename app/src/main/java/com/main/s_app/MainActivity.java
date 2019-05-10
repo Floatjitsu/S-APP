@@ -3,6 +3,7 @@ package com.main.s_app;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -21,15 +22,19 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.forum);
+                case R.id.navigation_forum:
+                    transaction.replace(R.id.fragment_placeholder, new Forum());
+                    transaction.commit();
                     return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.news);
+                case R.id.navigation_news:
+                    transaction.replace(R.id.fragment_placeholder, new News());
+                    transaction.commit();
                     return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.calendar);
+                case R.id.navigation_calendar:
+                    transaction.replace(R.id.fragment_placeholder, new Calendar());
+                    transaction.commit();
                     return true;
             }
             return false;
@@ -40,16 +45,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mTextMessage = findViewById(R.id.message);
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         mAuth = FirebaseAuth.getInstance();
-        /*if(mAuth.getCurrentUser() != null) {
-            Toast.makeText(this, "Welcome " + mAuth.getCurrentUser().getDisplayName(), Toast.LENGTH_LONG).show();
-        } */
 
+        //Set up the Forum Fragment as the first Fragment the user sees when starting
+        //the Main Activity
+        getSupportFragmentManager().beginTransaction().add(
+                R.id.fragment_placeholder, new Forum()
+        ).commit();
     }
 
 }
