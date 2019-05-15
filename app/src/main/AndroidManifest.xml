@@ -9,11 +9,13 @@
         android:roundIcon="@mipmap/sapp_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main">
+        <activity android:name=".AddArticleActivity"
+            android:parentActivityName=".MainActivity">
 
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main" />
         <activity android:name=".SignUp" />
         <activity android:name=".Login">
             <intent-filter>

@@ -1,23 +1,22 @@
 package com.main.s_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+import com.leinardi.android.speeddial.SpeedDialActionItem;
+import com.leinardi.android.speeddial.SpeedDialView;
 
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    SpeedDialView mAddArticle;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -29,14 +28,17 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_forum:
                     transaction.replace(R.id.fragment_placeholder, new Forum());
                     transaction.commit();
+                    mAddArticle.setVisibility(View.VISIBLE);
                     return true;
                 case R.id.navigation_news:
                     transaction.replace(R.id.fragment_placeholder, new News());
                     transaction.commit();
+                    mAddArticle.setVisibility(View.GONE);
                     return true;
                 case R.id.navigation_calendar:
                     transaction.replace(R.id.fragment_placeholder, new Calendar());
                     transaction.commit();
+                    mAddArticle.setVisibility(View.GONE);
                     return true;
             }
             return false;
@@ -57,6 +59,38 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().add(
                 R.id.fragment_placeholder, new Forum()
         ).commit();
+
+        mAddArticle = findViewById(R.id.speedDial);
+        mAddArticle.inflate(R.menu.add_article_menu);
+        setOnClickListenerForAddArticle();
+    }
+
+    /*
+    Read which item got pressed and start the Add Article Activity
+     */
+    private void setOnClickListenerForAddArticle() {
+        final Intent intent = new Intent(this, AddArticleActivity.class);
+        mAddArticle.setOnActionSelectedListener(new SpeedDialView.OnActionSelectedListener() {
+            @Override
+            public boolean onActionSelected(SpeedDialActionItem actionItem) {
+                switch (actionItem.getId()) {
+                    case R.id.add_text:
+                        intent.putExtra("articleKind", R.string.add_text);
+                        startActivity(intent);
+                        return true;
+                    case R.id.add_image:
+                        intent.putExtra("articleKind", R.string.add_image);
+                        startActivity(intent);
+                        return true;
+                    case R.id.add_link:
+                        intent.putExtra("articleKind", R.string.add_link);
+                        startActivity(intent);
+                        return true;
+                    default:
+                        return true;
+                }
+            }
+        });
     }
 
 }

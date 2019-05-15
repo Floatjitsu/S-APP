@@ -28,5 +28,12 @@
 
     <!-- Add Article -->
     <string name="add_article">Add Article</string>
+    <string name="title_activity_add_article">AddArticleActivity</string>
+    <string name="add_image">Image</string>
+    <string name="add_text">Text</string>
+    <string name="add_link">Link</string>
+    <string name="title">Title</string>
+    <string name="text_post">Your text post</string>
+    <string name="article_post">POST</string>
 
 </resources>
