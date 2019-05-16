@@ -23,22 +23,18 @@ public class AddArticleActivity extends AppCompatActivity {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             switch(bundle.getInt("articleKind")) {
                 case R.string.add_text:
+                    mToolbar.setTitle(R.string.text_post);
                     transaction.add(R.id.add_article_placeholder, new AddText()).commit();
                     break;
                 case R.string.add_image:
+                    mToolbar.setTitle(R.string.image_post);
                     transaction.add(R.id.add_article_placeholder, new AddImage()).commit();
                     break;
                 case R.string.add_link:
+                    mToolbar.setTitle(R.string.link_post);
                     //TODO: Replace add link Fragment
                     break;
             }
-        }
-    }
-
-    private void setUpToolbar() {
-        setSupportActionBar(mToolbar);
-        if(getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
 
@@ -49,6 +45,13 @@ public class AddArticleActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.add_article_activity_menu, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    private void setUpToolbar() {
+        setSupportActionBar(mToolbar);
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
 }

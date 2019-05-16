@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/editText_title_image"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:hint="@string/image_post"
+            android:hint="@string/image_post_description"
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
             android:background="@color/colorPrimary"/>
@@ -74,5 +74,13 @@
         android:paddingStart="22dp"
         android:paddingEnd="22dp"
         android:layout_marginEnd="35dp"/>
+
+    <ImageView
+        android:id="@+id/image_thumbnail"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/description_placeholder"
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>

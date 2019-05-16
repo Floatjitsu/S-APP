@@ -27,7 +27,7 @@
         app:layout_constraintTop_toBottomOf="@id/editText_title_text"
         app:layout_constraintLeft_toLeftOf="parent"
         android:background="@color/colorPrimary"
-        android:hint="@string/text_post"
+        android:hint="@string/text_post_description"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp" />
 

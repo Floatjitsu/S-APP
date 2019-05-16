@@ -39,7 +39,7 @@ public class AddText extends Fragment {
                 mPost.setError("Please enter some text");
             }
             //TODO: Create Text Article/Post
-        };
+        }
         return super.onOptionsItemSelected(item);
     }
 }
