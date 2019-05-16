@@ -32,7 +32,7 @@ public class AddArticleActivity extends AppCompatActivity {
                     break;
                 case R.string.add_link:
                     mToolbar.setTitle(R.string.link_post);
-                    //TODO: Replace add link Fragment
+                    transaction.add(R.id.add_article_placeholder, new AddLink()).commit();
                     break;
             }
         }

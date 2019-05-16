@@ -45,6 +45,7 @@
 
     <!-- Link Post -->
     <string name="link_post">Link post</string>
+    <string name="link_content">http://</string>
 
 
 </resources>
