@@ -26,7 +26,7 @@ public class AddArticleActivity extends AppCompatActivity {
                     transaction.add(R.id.add_article_placeholder, new AddText()).commit();
                     break;
                 case R.string.add_image:
-                    //TODO: Replace add image Fragment
+                    transaction.add(R.id.add_article_placeholder, new AddImage()).commit();
                     break;
                 case R.string.add_link:
                     //TODO: Replace add link Fragment

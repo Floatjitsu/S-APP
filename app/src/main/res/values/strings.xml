@@ -35,5 +35,6 @@
     <string name="title">Title</string>
     <string name="text_post">Your text post</string>
     <string name="article_post">POST</string>
+    <string name="image_post">Your Image description (optional)</string>
 
 </resources>
