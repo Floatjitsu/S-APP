@@ -35,13 +35,21 @@
     <string name="title">Title</string>
     <string name="article_post">POST</string>
 
+    <!-- Post -->
+    <string name="post_posted_by">Posted by</string>
+    <string name="post_date">Post Date</string>
+
     <!-- Image Post -->
     <string name="image_post">Image post</string>
     <string name="image_post_description">Your Image description (optional)</string>
+    <string name="image_post_item_title">Image Title</string>
+    <string name="image_post_item_description">Image Description</string>
 
     <!-- Text Post -->
     <string name="text_post">Text post</string>
     <string name="text_post_description">Your text post</string>
+    <string name="text_post_item_title">Text Title</string>
+    <string name="text_post_item_text_content">Text Content</string>
 
     <!-- Link Post -->
     <string name="link_post">Link post</string>

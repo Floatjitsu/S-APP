@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -15,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:textSize="12sp"
         android:textColor="@color/colorSecondaryLight"
-        android:text="Posted by"/>
+        android:text="@string/post_posted_by"/>
 
     <TextView
         android:id="@+id/image_post_id"
@@ -33,7 +34,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:textSize="12sp"
         android:textColor="@color/colorSecondaryLight"
-        android:text="Test Date"/>
+        android:text="@string/post_date"/>
 
     <TextView
         android:id="@+id/image_post_title"
@@ -43,26 +44,37 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:textColor="@color/textColor"
         android:textSize="18sp"
-        android:text="Image Title Test"/>
+        android:text=""/>
 
-    <ImageView
-        android:id="@+id/image_post_image"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        app:layout_constraintTop_toBottomOf="@id/image_post_title"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:contentDescription="@string/image_post"
-        android:layout_marginTop="5dp"/>
-
-    <TextView
-        android:id="@+id/image_post_description"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/image_post_title"
-        app:layout_constraintLeft_toRightOf="@+id/image_post_image"
-        android:layout_marginTop="5dp"
-        android:textSize="14sp"
-        android:gravity="fill"
-        android:text="Test Description"/>
+        app:layout_constraintTop_toBottomOf="@id/image_post_title"
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/image_post_image"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:layout_constraintTop_toBottomOf="@id/image_post_title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:contentDescription="@string/image_post"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/image_post_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/image_post_title"
+            app:layout_constraintLeft_toRightOf="@+id/image_post_image"
+            android:layout_marginTop="5dp"
+            android:textSize="14sp"
+            android:gravity="fill"
+            android:text="@string/image_post_item_description"/>
+
+    </LinearLayout>
+
+
 
 </android.support.constraint.ConstraintLayout>

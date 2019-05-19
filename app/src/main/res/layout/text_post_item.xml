@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:textSize="12sp"
         android:textColor="@color/colorSecondaryLight"
-        android:text="Posted by"/>
+        android:text="@string/post_posted_by"/>
 
     <TextView
         android:id="@+id/text_post_id"
@@ -33,7 +33,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:textSize="12sp"
         android:textColor="@color/colorSecondaryLight"
-        android:text="Test Date"/>
+        android:text="@string/post_date"/>
 
     <TextView
         android:id="@+id/text_post_title"
@@ -42,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@id/text_post_posted_by"
         android:textSize="18sp"
         android:textColor="@color/textColor"
-        android:text="Test Title"/>
+        android:text="@string/text_post_item_title"/>
 
     <TextView
         android:id="@+id/text_post_content"
@@ -51,8 +51,6 @@
         app:layout_constraintTop_toBottomOf="@id/text_post_title"
         android:textSize="14sp"
         android:textColor="@color/textColor"
-        android:text="Test Content"/>
-
-
+        android:text="@string/text_post_item_text_content"/>
 
 </android.support.constraint.ConstraintLayout>
