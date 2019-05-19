@@ -44,7 +44,7 @@ public class AddText extends Fragment {
                 mPost.setError("Please enter some text");
             } else {
                 mFirebaseForum.addTextPostToFirebase(mTitle.getText().toString(), mPost.getText().toString());
-                //startActivity(new Intent(getActivity(), MainActivity.class));
+                startActivity(new Intent(getActivity(), MainActivity.class));
             }
         }
         return super.onOptionsItemSelected(item);

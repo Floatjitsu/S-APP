@@ -90,6 +90,7 @@ public class AddImage extends Fragment implements View.OnClickListener {
                 } else {
                    mFirebaseForum.addImagePostToFirebase(mImageTitle.getText().toString(), mImageDesc.getText().toString(), imageUri.toString());
                 }
+                startActivity(new Intent(getActivity(), MainActivity.class));
             }
         }
         return super.onOptionsItemSelected(item);
