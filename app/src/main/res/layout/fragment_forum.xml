@@ -13,4 +13,11 @@
         android:background="@color/colorSecondaryLight"
         app:title="@string/forum" />
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_forum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar_forum"
+        android:layout_marginBottom="50dp"/>
+
 </RelativeLayout>

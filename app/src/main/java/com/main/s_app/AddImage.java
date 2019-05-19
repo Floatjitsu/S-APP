@@ -1,14 +1,18 @@
 package com.main.s_app;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.FileProvider;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,13 +23,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.annotations.NotNull;
+import com.main.s_app.com.main.s_app.firebase.FirebaseForum;
+import com.main.s_app.com.main.s_app.firebase.FirebaseStorageRep;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class AddImage extends Fragment implements View.OnClickListener {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int REQUEST_IMAGE_GALLERY = 2;
+
+    private FirebaseStorageRep mFirebaseStorageRep;
+    private FirebaseForum mFirebaseForum;
 
     FragmentActivity mParentActivity; //Parent Activity
     ImageView mImageThumbnail;
@@ -38,7 +51,7 @@ public class AddImage extends Fragment implements View.OnClickListener {
         View myView = inflater.inflate(R.layout.fragment_add_image, container, false);
 
         mImageTitle = myView.findViewById(R.id.editText_title_image);
-        mImageDesc = myView.findViewById(R.id.editText_title_text);
+        mImageDesc = myView.findViewById(R.id.editText_description_image);
 
         mButtonCamera = myView.findViewById(R.id.button_camera);
         mButtonCamera.setOnClickListener(this);
@@ -48,6 +61,10 @@ public class AddImage extends Fragment implements View.OnClickListener {
 
         mParentActivity = getActivity();
         mImageThumbnail = myView.findViewById(R.id.image_thumbnail);
+
+        //References to the Firebase Forum Realtime DB and Storage
+        mFirebaseForum = new FirebaseForum();
+        mFirebaseStorageRep = new FirebaseStorageRep();
 
         //Enable onOptionsItemSelected Event
         setHasOptionsMenu(true);
@@ -63,9 +80,17 @@ public class AddImage extends Fragment implements View.OnClickListener {
                 mImageTitle.setError("Please enter a title");
             } else if(mImageThumbnail.getDrawable() == null) {
                 Toast.makeText(mParentActivity, "Please select an Image!", Toast.LENGTH_SHORT).show();
-            }/* else {
-                //TODO: Upload Image to Firebase Storage and create forum article
-            } */
+            } else {
+                Uri imageUri = createImageUri();
+                //Upload Image to Firebase Storage
+                mFirebaseStorageRep.uploadToStorage(((BitmapDrawable) mImageThumbnail.getDrawable()).getBitmap(), imageUri);
+                //Create a new Image Post in the Firebase Realtime DB
+                if(mImageDesc.getText().toString().equals("")) {
+                    mFirebaseForum.addImagePostToFirebase(mImageTitle.getText().toString(), "", imageUri.toString());
+                } else {
+                   mFirebaseForum.addImagePostToFirebase(mImageTitle.getText().toString(), mImageDesc.getText().toString(), imageUri.toString());
+                }
+            }
         }
         return super.onOptionsItemSelected(item);
     }
@@ -117,7 +142,7 @@ public class AddImage extends Fragment implements View.OnClickListener {
     }
 
     private void setImageThumbnail(Bitmap imageBitmap) {
-        //Make 2 upload Buttons Invisible
+        //Make 2 circle Buttons Invisible
         mButtonGallery.setVisibility(View.GONE);
         mButtonCamera.setVisibility(View.GONE);
 
@@ -126,5 +151,11 @@ public class AddImage extends Fragment implements View.OnClickListener {
 
         //Set imageBitmap as source for mImageThumbnail
         mImageThumbnail.setImageBitmap(imageBitmap);
+    }
+
+    //Creates a URI for camera-taken images
+    private Uri createImageUri() {
+        @SuppressLint("SimpleDateFormat") String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        return Uri.parse("JPEG_" + timeStamp + ".jpg");
     }
 }

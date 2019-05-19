@@ -61,6 +61,7 @@ public class Login extends AppCompatActivity {
     private void tryLogin(FirebaseUser currentUser) {
         if(currentUser != null) {
             startActivity(new Intent(this, MainActivity.class));
+            Toast.makeText(this, "Welcome " + currentUser.getDisplayName(), Toast.LENGTH_LONG).show();
         }
     }
 }
