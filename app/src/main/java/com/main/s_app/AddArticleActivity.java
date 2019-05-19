@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 public class AddArticleActivity extends AppCompatActivity {
 
@@ -40,7 +42,7 @@ public class AddArticleActivity extends AppCompatActivity {
 
     /*
     Create the Options Menu for the Activity
-     */
+    */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.add_article_activity_menu, menu);
@@ -53,5 +55,4 @@ public class AddArticleActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
-
 }

@@ -1,6 +1,7 @@
 package com.main.s_app;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.annotations.NotNull;
+import com.main.s_app.com.main.s_app.dialogs.DiscardPostDialog;
 import com.main.s_app.com.main.s_app.firebase.FirebaseForum;
 import com.main.s_app.com.main.s_app.firebase.FirebaseStorageRep;
 
@@ -92,6 +94,12 @@ public class AddImage extends Fragment implements View.OnClickListener {
                 }
                 startActivity(new Intent(getActivity(), MainActivity.class));
             }
+        } else {
+            //Back Button
+            if(getFragmentManager() != null) {
+                new DiscardPostDialog().show(getFragmentManager(), "DiscardPostDialog");
+            }
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+
+import com.main.s_app.com.main.s_app.dialogs.DiscardPostDialog;
 import com.main.s_app.com.main.s_app.firebase.FirebaseForum;
 
 public class AddText extends Fragment {
@@ -46,6 +48,12 @@ public class AddText extends Fragment {
                 mFirebaseForum.addTextPostToFirebase(mTitle.getText().toString(), mPost.getText().toString());
                 startActivity(new Intent(getActivity(), MainActivity.class));
             }
+        } else {
+            //Back Button
+            if(getFragmentManager() != null) {
+                new DiscardPostDialog().show(getFragmentManager(), "DiscardPostDialog");
+            }
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

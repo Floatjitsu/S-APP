@@ -55,5 +55,9 @@
     <string name="link_post">Link post</string>
     <string name="link_content">http://</string>
 
+    <!-- Discard Post -->
+    <string name="discard_image_post_message">Discard post submission?</string>
+    <string name="discard_cancel">@android:string/cancel</string>
+    <string name="discard_approve">DISCARD</string>
 
 </resources>
