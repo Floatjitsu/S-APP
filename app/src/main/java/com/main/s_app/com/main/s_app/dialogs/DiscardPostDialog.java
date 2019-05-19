@@ -27,7 +27,7 @@ public class DiscardPostDialog extends DialogFragment {
                     }
                 })
                 .setNegativeButton(R.string.discard_cancel, null);
-        
+
         return builder.create();
     }
 

@@ -21,7 +21,6 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
     SpeedDialView mAddArticle;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -57,8 +56,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        mAuth = FirebaseAuth.getInstance();
 
         //Set up the Forum Fragment as the first Fragment the user sees when starting
         //the Main Activity
