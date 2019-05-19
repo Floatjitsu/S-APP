@@ -1,7 +1,5 @@
 package com.main.s_app.com.main.s_app.firebase;
 
-import android.net.Uri;
-
 public class ImagePost extends Post {
 
     static final String POST_KIND = "image";
@@ -10,7 +8,7 @@ public class ImagePost extends Post {
 
     public ImagePost() {}
 
-    public ImagePost(String id, String title, long timeStamp, String postKind, User user, String imageUri, String imageDescription) {
+    ImagePost(String id, String title, long timeStamp, String postKind, User user, String imageUri, String imageDescription) {
         super(id, title, timeStamp, postKind, user);
         this.imageUri = imageUri;
         this.imageDescription = imageDescription;
