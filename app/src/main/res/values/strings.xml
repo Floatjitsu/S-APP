@@ -8,6 +8,10 @@
     <string name="signUp"> Sign Up</string>
     <string name="or">OR</string>
 
+    <!-- Logout strings -->
+    <string name="logout">Logout</string>
+    <string name="logout_question">Do you want to logout?</string>
+
     <!-- SignUp strings -->
     <string name="firstName">First Name</string>
     <string name="surname">Surname</string>

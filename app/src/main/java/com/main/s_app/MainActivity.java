@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.leinardi.android.speeddial.SpeedDialActionItem;
 import com.leinardi.android.speeddial.SpeedDialView;
+import com.main.s_app.com.main.s_app.dialogs.LogoutDialog;
 
 import java.util.Locale;
 
@@ -59,8 +60,6 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-
-
         //Set up the Forum Fragment as the first Fragment the user sees when starting
         //the Main Activity
         getSupportFragmentManager().beginTransaction().add(
@@ -100,4 +99,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        new LogoutDialog().show(getSupportFragmentManager(), "LogoutDialog");
+    }
 }
