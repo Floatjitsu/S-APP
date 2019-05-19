@@ -46,9 +46,12 @@ public class Login extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(!task.isSuccessful()) {
-                            Toast.makeText(context, "Wrong User Credentials!", Toast.LENGTH_SHORT).show();
-                        }
+                    //Login was not successful
+                    if(!task.isSuccessful()) {
+                        Toast.makeText(context, "Wrong User Credentials!", Toast.LENGTH_SHORT).show();
+                    } else { //Login was successful
+                        startActivity(new Intent(context, MainActivity.class));
+                    }
                     }
                 });
     }
