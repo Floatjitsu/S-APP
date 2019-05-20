@@ -12,7 +12,11 @@ import android.widget.TextView;
 
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.leocardz.link.preview.library.LinkPreviewCallback;
+import com.leocardz.link.preview.library.SourceContent;
+import com.leocardz.link.preview.library.TextCrawler;
 import com.main.s_app.com.main.s_app.firebase.ImagePost;
+import com.main.s_app.com.main.s_app.firebase.LinkPost;
 import com.main.s_app.com.main.s_app.firebase.Post;
 import com.main.s_app.com.main.s_app.firebase.TextPost;
 
@@ -26,7 +30,7 @@ public class ForumAdapter extends RecyclerView.Adapter {
 
     private static final int VIEW_TYPE_TEXT_POST = 1;
     private static final int VIEW_TYPE_IMAGE_POST = 2;
-    //TODO: Add VIEW_TYPE constants for link post
+    private static final int VIEW_TYPE_LINK_POST = 3;
 
     private Context mActivityContext;
     private ArrayList<Post> mPosts;
@@ -47,10 +51,11 @@ public class ForumAdapter extends RecyclerView.Adapter {
     public int getItemViewType(int position) {
         if(mPosts.get(position) instanceof TextPost) {
             return VIEW_TYPE_TEXT_POST;
+        } else if(mPosts.get(position) instanceof LinkPost) {
+            return VIEW_TYPE_LINK_POST;
         } else {
             return VIEW_TYPE_IMAGE_POST;
         }
-        //TODO: Return different view types for different instanceof results
     }
 
     @NonNull
@@ -60,11 +65,13 @@ public class ForumAdapter extends RecyclerView.Adapter {
         if(i == VIEW_TYPE_TEXT_POST) {
             view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.text_post_item, viewGroup, false);
             return new TextPostHolder(view);
+        } else if(i == VIEW_TYPE_LINK_POST) {
+            view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.link_post_item, viewGroup, false);
+            return new LinkPostHolder(view);
         } else {
             view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.image_post_item, viewGroup, false);
             return new ImagePostHolder(view);
         }
-        //TODO: Create other view types and return them
         /*view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.text_post_item, viewGroup, false);
         return new TextPostHolder(view);*/
     }
@@ -76,8 +83,9 @@ public class ForumAdapter extends RecyclerView.Adapter {
             ((TextPostHolder) viewHolder).bind((TextPost) post);
         } else if(post instanceof ImagePost) {
             ((ImagePostHolder) viewHolder).bind((ImagePost) post);
+        } else {
+            ((LinkPostHolder) viewHolder).bind((LinkPost) post);
         }
-        //TODO: Create bind methods for other view types (image, link)
     }
 
     @Override
@@ -138,5 +146,46 @@ public class ForumAdapter extends RecyclerView.Adapter {
         }
     }
 
-    //TODO: Add LinkPostHolder
+    class LinkPostHolder extends RecyclerView.ViewHolder {
+
+        TextView linkPostTitle, linkPostDescription, linkPostPostedBy, linkPostDate, linkPostId, linkPostUrl;
+        ImageView linkPostImage;
+
+        LinkPostHolder(@NonNull View itemView) {
+            super(itemView);
+            linkPostTitle = itemView.findViewById(R.id.link_post_title);
+            linkPostDescription = itemView.findViewById(R.id.link_post_description);
+            linkPostId = itemView.findViewById(R.id.link_post_id);
+            linkPostDate = itemView.findViewById(R.id.link_post_date);
+            linkPostPostedBy = itemView.findViewById(R.id.link_post_posted_by);
+            linkPostImage = itemView.findViewById(R.id.link_post_image);
+            linkPostUrl = itemView.findViewById(R.id.link_post_url);
+        }
+
+        void bind(LinkPost linkPost) {
+            linkPostTitle.setText(linkPost.getPostTitle());
+            linkPostPostedBy.append(" " + linkPost.getUser().getUsername());
+            linkPostDate.setText(getPrettyDate(linkPost.getTimeStamp()));
+            linkPostId.setText(linkPost.getPostId());
+            linkPostUrl.setText(linkPost.getUrl());
+            setUrlImageDesc(linkPost.getUrl(), linkPostImage, linkPostDescription);
+        }
+
+        void setUrlImageDesc(String url, final ImageView urlImage, final TextView urlDescription) {
+            TextCrawler textCrawler = new TextCrawler();
+            LinkPreviewCallback callback = new LinkPreviewCallback() {
+                @Override
+                public void onPre() {
+
+                }
+
+                @Override
+                public void onPos(SourceContent sourceContent, boolean b) {
+                    urlDescription.setText(sourceContent.getDescription());
+                    GlideApp.with(mActivityContext).load(sourceContent.getImages().get(0)).into(urlImage);
+                }
+            };
+            textCrawler.makePreview(callback, url);
+        }
+    }
 }

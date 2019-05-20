@@ -69,6 +69,25 @@ public class FirebaseForum {
     }
 
     /**
+     * Add a new link post to the Firebase DB
+     * @param title title of post
+     * @param url link url
+     */
+    public void addLinkPostToFirebase(String title, String url) {
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user != null) {
+            User postUser = new User(user.getDisplayName(), user.getUid());
+            LinkPost linkPost =
+                    new LinkPost(
+                            generateUniqueId(), title, new Date().getTime(),
+                            LinkPost.POST_KIND, postUser, url
+                    );
+            DatabaseReference forumReference = mDatabase.getReference(FORUM_REFERENCE);
+            forumReference.push().setValue(linkPost);
+        }
+    }
+
+    /**
      * Fill given RecyclerView with data from the Firebase Realtime DB
      * @param forum the recycler view
      */
@@ -92,6 +111,11 @@ public class FirebaseForum {
                                 ImagePost imagePost = data.getValue(ImagePost.class);
                                 if(imagePost != null)
                                     posts.add(imagePost);
+                                break;
+                            case(LinkPost.POST_KIND):
+                                LinkPost linkPost = data.getValue(LinkPost.class);
+                                if(linkPost != null)
+                                    posts.add(linkPost);
                                 break;
                         }
                         //TODO: Add other cases for image and link post to switch

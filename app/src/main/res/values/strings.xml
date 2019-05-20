@@ -58,6 +58,9 @@
     <!-- Link Post -->
     <string name="link_post">Link post</string>
     <string name="link_content">http://</string>
+    <string name="link_post_description">Link description</string>
+    <string name="link_post_url">Url</string>
+    <string name="link_post_title">Link Title</string>
 
     <!-- Discard Post -->
     <string name="discard_image_post_message">Discard post submission?</string>

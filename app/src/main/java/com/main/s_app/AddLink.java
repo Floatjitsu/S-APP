@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.webkit.URLUtil;
 import android.widget.EditText;
 
+import com.main.s_app.com.main.s_app.firebase.FirebaseForum;
+
 public class AddLink extends Fragment {
 
     EditText mLinkTitle, mLink;
@@ -38,9 +40,9 @@ public class AddLink extends Fragment {
                 mLink.setError("Please enter a link");
             } else if(!URLUtil.isValidUrl(mLink.getText().toString())) {
                 mLink.setError("Please provide a valid URL");
-            }/* else {
-                //TODO: Create Link Post in Firebase DB
-            } */
+            } else {
+                new FirebaseForum().addLinkPostToFirebase(mLinkTitle.getText().toString(), mLink.getText().toString());
+            }
         }
         return super.onOptionsItemSelected(item);
     }

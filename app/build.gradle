@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.main.s_app"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -38,5 +38,9 @@ dependencies {
     implementation "com.leinardi.android:speed-dial:2.0.1"
     implementation 'com.github.markushi:circlebutton:1.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+    implementation 'org.jsoup:jsoup:1.11.3' // required
+    implementation 'com.leocardz:link-preview:2.0.0@aar'
+
 }
 apply plugin: 'com.google.gms.google-services'

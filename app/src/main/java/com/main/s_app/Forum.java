@@ -11,12 +11,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.main.s_app.com.main.s_app.firebase.FirebaseForum;
 
 public class Forum extends Fragment {
 
     Toolbar mToolbar;
     RecyclerView mForum;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
