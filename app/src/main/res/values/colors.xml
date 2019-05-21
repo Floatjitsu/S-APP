@@ -8,4 +8,7 @@
     <color name="colorSecondaryLight">#a4a4a4</color>
     <color name="textColor">#ffffff</color>
     <color name="bgColor">#000000</color>
+    <color name="bgColorLight">#F3F3F3F3</color>
+    <color name="bgContentHolderColor">#ffffff</color>
+    <color name="bgColorNav">#FFFFFF</color>
 </resources>

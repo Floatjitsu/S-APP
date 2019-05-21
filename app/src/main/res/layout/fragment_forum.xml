@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorPrimary">
+    android:background="@color/bgColorLight">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_forum"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorSecondaryLight"
+        android:background="@color/bgColorNav"
+        app:titleTextColor="@color/bodyTextColor"
         app:title="@string/forum" />
 
     <android.support.v7.widget.RecyclerView

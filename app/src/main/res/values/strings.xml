@@ -67,4 +67,7 @@
     <string name="discard_cancel">@android:string/cancel</string>
     <string name="discard_approve">DISCARD</string>
 
+    <!-- News Menu -->
+    <string name="manage_news_feed">Manage your News feed</string>
+
 </resources>
