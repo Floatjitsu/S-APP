@@ -43,7 +43,7 @@ public class FirebaseForum {
         if(user != null) {
             User postUser = new User(user.getDisplayName(), user.getUid());
             TextPost textPost = new TextPost(
-                    TextPost.POST_KIND + "-" + generateUniqueId(), title, new Date().getTime(),
+                    generateUniqueId(), title, new Date().getTime(),
                     TextPost.POST_KIND, postUser, content
             );
             DatabaseReference forumReference = mDatabase.getReference(FORUM_REFERENCE);
@@ -63,7 +63,7 @@ public class FirebaseForum {
             User postUser = new User(user.getDisplayName(), user.getUid());
             ImagePost imagePost =
                     new ImagePost(
-                            ImagePost.POST_KIND + "-" + generateUniqueId(), title, new Date().getTime(),
+                            generateUniqueId(), title, new Date().getTime(),
                             ImagePost.POST_KIND, postUser, imageUri, desc
                     );
             DatabaseReference forumReference = mDatabase.getReference(FORUM_REFERENCE);
@@ -82,7 +82,7 @@ public class FirebaseForum {
             User postUser = new User(user.getDisplayName(), user.getUid());
             LinkPost linkPost =
                     new LinkPost(
-                            LinkPost.POST_KIND + "-" + generateUniqueId(), title, new Date().getTime(),
+                            generateUniqueId(), title, new Date().getTime(),
                             LinkPost.POST_KIND, postUser, url
                     );
             DatabaseReference forumReference = mDatabase.getReference(FORUM_REFERENCE);
