@@ -19,7 +19,7 @@
         android:text="@string/post_posted_by"/>
 
     <TextView
-        android:id="@+id/image_post_id"
+        android:id="@+id/post_id"
         android:layout_width="1dp"
         android:layout_height="1dp"
         app:layout_constraintTop_toTopOf="parent"

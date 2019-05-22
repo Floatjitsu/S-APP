@@ -99,7 +99,10 @@ public class ForumAdapter extends RecyclerView.Adapter implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        int i = 1;
+        TextView postId = v.findViewById(R.id.post_id);
+        //TODO: Create switch for post id
+        //TODO: Create a bundle with the post id
+        //TODO: Start post comment activity
     }
 
     class TextPostHolder extends RecyclerView.ViewHolder {
@@ -112,7 +115,7 @@ public class ForumAdapter extends RecyclerView.Adapter implements View.OnClickLi
             textPostContent = itemView.findViewById(R.id.text_post_content);
             textPostPostedBy = itemView.findViewById(R.id.text_post_posted_by);
             textPostDate = itemView.findViewById(R.id.text_post_date);
-            textPostId = itemView.findViewById(R.id.text_post_id);
+            textPostId = itemView.findViewById(R.id.post_id);
         }
 
         void bind(TextPost textPost) {
@@ -135,7 +138,7 @@ public class ForumAdapter extends RecyclerView.Adapter implements View.OnClickLi
             imagePostDesc = itemView.findViewById(R.id.image_post_description);
             imagePostPostedBy = itemView.findViewById(R.id.image_post_posted_by);
             imagePostDate = itemView.findViewById(R.id.image_post_date);
-            imagePostId = itemView.findViewById(R.id.image_post_id);
+            imagePostId = itemView.findViewById(R.id.post_id);
             imagePostImage = itemView.findViewById(R.id.image_post_image);
         }
 
@@ -159,7 +162,7 @@ public class ForumAdapter extends RecyclerView.Adapter implements View.OnClickLi
             super(itemView);
             linkPostTitle = itemView.findViewById(R.id.link_post_title);
             linkPostDescription = itemView.findViewById(R.id.link_post_description);
-            linkPostId = itemView.findViewById(R.id.link_post_id);
+            linkPostId = itemView.findViewById(R.id.post_id);
             linkPostDate = itemView.findViewById(R.id.link_post_date);
             linkPostPostedBy = itemView.findViewById(R.id.link_post_posted_by);
             linkPostImage = itemView.findViewById(R.id.link_post_image);
