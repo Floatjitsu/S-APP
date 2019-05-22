@@ -2,6 +2,7 @@ package com.main.s_app;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
@@ -27,7 +28,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 
-public class ForumAdapter extends RecyclerView.Adapter implements View.OnClickListener {
+public class ForumAdapter extends RecyclerView.Adapter {
 
     private static final int VIEW_TYPE_TEXT_POST = 1;
     private static final int VIEW_TYPE_IMAGE_POST = 2;
@@ -65,7 +66,7 @@ public class ForumAdapter extends RecyclerView.Adapter implements View.OnClickLi
         View view;
         if(i == VIEW_TYPE_TEXT_POST) {
             view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.text_post_item, viewGroup, false);
-            view.setOnClickListener(this);
+            //view.setOnClickListener(this);
             return new TextPostHolder(view);
         } else if(i == VIEW_TYPE_LINK_POST) {
             view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.link_post_item, viewGroup, false);
@@ -93,21 +94,24 @@ public class ForumAdapter extends RecyclerView.Adapter implements View.OnClickLi
         return mPosts.size();
     }
 
+
+
     private String getPrettyDate(long timeStamp) {
         Date date = new Date(timeStamp);
         return DateUtils.getRelativeTimeSpanString(date.getTime(), Calendar.getInstance().getTimeInMillis(), DateUtils.MINUTE_IN_MILLIS).toString();
     }
 
-    @Override
-    public void onClick(View v) {
-        TextView postId = v.findViewById(R.id.post_id);
-        mActivityContext.startActivity(new Intent(mActivityContext, PostComments.class));
-        //TODO: Create switch for post id
-        //TODO: Create a bundle with the post id
-        //TODO: Start post comment activity
+    /*
+    Starts the comment activity with a given bundle
+     */
+    private void startCommentsActivity(Bundle bundle) {
+        Intent intent = new Intent(mActivityContext, PostComments.class);
+        intent.putExtras(bundle);
+        mActivityContext.startActivity(intent);
     }
 
-    class TextPostHolder extends RecyclerView.ViewHolder {
+
+    class TextPostHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView textPostTitle, textPostContent, textPostPostedBy, textPostDate, textPostId;
 
@@ -118,6 +122,7 @@ public class ForumAdapter extends RecyclerView.Adapter implements View.OnClickLi
             textPostPostedBy = itemView.findViewById(R.id.text_post_posted_by);
             textPostDate = itemView.findViewById(R.id.text_post_date);
             textPostId = itemView.findViewById(R.id.post_id);
+            itemView.setOnClickListener(this);
         }
 
         void bind(TextPost textPost) {
@@ -126,6 +131,21 @@ public class ForumAdapter extends RecyclerView.Adapter implements View.OnClickLi
             textPostPostedBy.append(" " + textPost.getUser().getUsername());
             textPostDate.setText(getPrettyDate(textPost.getTimeStamp()));
             textPostId.setText(textPost.getPostId());
+        }
+
+        /*
+        OnClick Event for a Text Post
+         */
+        @Override
+        public void onClick(View v) {
+            Bundle bundle = new Bundle();
+            bundle.putString(Constants.KEY_POST_TITLE, textPostTitle.getText().toString());
+            bundle.putString(Constants.KEY_POST_ID, textPostId.getText().toString());
+            bundle.putString(Constants.KEY_POST_POSTED_BY, textPostPostedBy.getText().toString());
+            bundle.putString(Constants.KEY_TEXT_POST_CONTENT, textPostContent.getText().toString());
+            bundle.putString(Constants.KEY_POST_DATE, textPostDate.getText().toString());
+            bundle.putString(Constants.KEY_POST_KIND, TextPost.POST_KIND);
+            startCommentsActivity(bundle);
         }
     }
 

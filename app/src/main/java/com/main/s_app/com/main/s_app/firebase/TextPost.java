@@ -2,7 +2,7 @@ package com.main.s_app.com.main.s_app.firebase;
 
 public class TextPost extends Post {
 
-    static final String POST_KIND = "text";
+    public static final String POST_KIND = "text";
     private String textContent;
 
     public TextPost() {}

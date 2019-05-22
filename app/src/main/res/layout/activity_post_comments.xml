@@ -23,7 +23,7 @@
 
     <!-- PLACEHOLDER FOR CONTENT FRAGMENTS
             ALTERNATES FOR EVERY POST TYPE (IMAGE, TEXT, LINK) -->
-    <FrameLayout
+    <android.support.constraint.ConstraintLayout
         android:id="@+id/post_comments_placeholder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
