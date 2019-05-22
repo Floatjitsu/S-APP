@@ -13,14 +13,14 @@ import android.widget.EditText;
 
 import com.main.s_app.com.main.s_app.firebase.FirebaseForum;
 
-public class AddLink extends Fragment {
+public class CreateLinkPost extends Fragment {
 
     EditText mLinkTitle, mLink;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View myView = inflater.inflate(R.layout.fragment_add_link, container, false);
+        View myView = inflater.inflate(R.layout.fragment_create_link_post, container, false);
 
         mLinkTitle = myView.findViewById(R.id.editText_title_link);
         mLink = myView.findViewById(R.id.editText_link);

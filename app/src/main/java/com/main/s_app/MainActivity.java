@@ -1,8 +1,6 @@
 package com.main.s_app;
 
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -11,13 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.leinardi.android.speeddial.SpeedDialActionItem;
 import com.leinardi.android.speeddial.SpeedDialView;
 import com.main.s_app.com.main.s_app.dialogs.LogoutDialog;
-
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -72,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     Read which item got pressed and start the Add Article Activity
      */
     private void setOnClickListenerForAddArticle() {
-        final Intent intent = new Intent(this, AddArticleActivity.class);
+        final Intent intent = new Intent(this, CreatePostActivity.class);
         mAddArticle.setOnActionSelectedListener(new SpeedDialView.OnActionSelectedListener() {
             @Override
             public boolean onActionSelected(SpeedDialActionItem actionItem) {

@@ -5,17 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
 
-public class AddArticleActivity extends AppCompatActivity {
+public class CreatePostActivity extends AppCompatActivity {
 
     Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_article);
+        setContentView(R.layout.activity_create_post);
 
         mToolbar = findViewById(R.id.toolbar_add_article);
         setUpToolbar();
@@ -26,15 +24,15 @@ public class AddArticleActivity extends AppCompatActivity {
             switch(bundle.getInt("articleKind")) {
                 case R.string.add_text:
                     mToolbar.setTitle(R.string.text_post);
-                    transaction.add(R.id.add_article_placeholder, new AddText()).commit();
+                    transaction.add(R.id.add_article_placeholder, new CreateTextPost()).commit();
                     break;
                 case R.string.add_image:
                     mToolbar.setTitle(R.string.image_post);
-                    transaction.add(R.id.add_article_placeholder, new AddImage()).commit();
+                    transaction.add(R.id.add_article_placeholder, new CreateImagePost()).commit();
                     break;
                 case R.string.add_link:
                     mToolbar.setTitle(R.string.link_post);
-                    transaction.add(R.id.add_article_placeholder, new AddLink()).commit();
+                    transaction.add(R.id.add_article_placeholder, new CreateLinkPost()).commit();
                     break;
             }
         }

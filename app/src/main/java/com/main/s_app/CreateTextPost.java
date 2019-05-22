@@ -15,7 +15,7 @@ import android.widget.EditText;
 import com.main.s_app.com.main.s_app.dialogs.DiscardPostDialog;
 import com.main.s_app.com.main.s_app.firebase.FirebaseForum;
 
-public class AddText extends Fragment {
+public class CreateTextPost extends Fragment {
 
     EditText mTitle;
     EditText mPost;
@@ -24,7 +24,7 @@ public class AddText extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View myView = inflater.inflate(R.layout.fragment_add_text, container, false);
+        View myView = inflater.inflate(R.layout.fragment_create_text_post, container, false);
 
         mTitle = myView.findViewById(R.id.editText_title_text);
         mPost = myView.findViewById(R.id.editText_post);

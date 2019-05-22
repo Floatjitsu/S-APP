@@ -1,19 +1,16 @@
 package com.main.s_app;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.FileProvider;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,18 +20,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.database.annotations.NotNull;
 import com.main.s_app.com.main.s_app.dialogs.DiscardPostDialog;
 import com.main.s_app.com.main.s_app.firebase.FirebaseForum;
 import com.main.s_app.com.main.s_app.firebase.FirebaseStorageRep;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class AddImage extends Fragment implements View.OnClickListener {
+public class CreateImagePost extends Fragment implements View.OnClickListener {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int REQUEST_IMAGE_GALLERY = 2;
@@ -50,7 +44,7 @@ public class AddImage extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View myView = inflater.inflate(R.layout.fragment_add_image, container, false);
+        View myView = inflater.inflate(R.layout.fragment_create_image_post, container, false);
 
         mImageTitle = myView.findViewById(R.id.editText_title_image);
         mImageDesc = myView.findViewById(R.id.editText_description_image);
