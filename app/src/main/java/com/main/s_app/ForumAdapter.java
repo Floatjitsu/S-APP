@@ -1,6 +1,7 @@
 package com.main.s_app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
@@ -100,6 +101,7 @@ public class ForumAdapter extends RecyclerView.Adapter implements View.OnClickLi
     @Override
     public void onClick(View v) {
         TextView postId = v.findViewById(R.id.post_id);
+        mActivityContext.startActivity(new Intent(mActivityContext, PostComments.class));
         //TODO: Create switch for post id
         //TODO: Create a bundle with the post id
         //TODO: Start post comment activity

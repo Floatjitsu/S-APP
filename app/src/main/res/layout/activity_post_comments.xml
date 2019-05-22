@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PostComments"
+    android:background="@color/bgColor"
+    android:paddingStart="5dp"
+    android:paddingEnd="5dp"
+    android:paddingBottom="8dp">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_post_comments"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/bgColor"
+        app:titleTextColor="@color/textColor"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/post_comments"/>
+
+    <TextView
+        android:id="@+id/post_comments_posted_by"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_post_comments"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="@string/post_posted_by"
+        android:textSize="12sp"
+        android:textColor="@color/colorSecondaryLight"/>
+
+    <TextView
+        android:id="@+id/post_comments_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_post_comments"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="12sp"
+        android:textColor="@color/colorSecondaryLight"
+        android:text="@string/post_date"/>
+
+    <TextView
+        android:id="@+id/post_comments_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/post_comments_posted_by"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textColor="@color/textColor"
+        android:textSize="18sp"
+        android:text="@string/post_title"/>
+
+    <!-- PLACEHOLDER FOR CONTENT FRAGMENTS
+            ALTERNATES FOR EVERY POST TYPE (IMAGE, TEXT, LINK) -->
+    <FrameLayout
+        android:id="@+id/post_comments_placeholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/post_comments_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- COMMENTS OF THE POST IN A RECYCLER VIEW -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_post_comments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/post_comments_placeholder"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <!-- NEW COMMENT SECTION -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textColor="@color/colorSecondaryLight"
+            android:hint="@string/post_add_comment"
+            android:inputType="textCapSentences"
+            android:textSize="14sp" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_send_white"/>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

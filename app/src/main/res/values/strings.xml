@@ -40,8 +40,11 @@
     <string name="article_post">POST</string>
 
     <!-- Post -->
+    <string name="post_title">Post title</string>
     <string name="post_posted_by">Posted by</string>
     <string name="post_date">Post Date</string>
+    <string name="post_comments">Post Comments</string>
+    <string name="post_add_comment">Add new comment &#8230;</string>
 
     <!-- Image Post -->
     <string name="image_post">Image post</string>
