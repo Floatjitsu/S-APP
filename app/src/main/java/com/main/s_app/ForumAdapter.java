@@ -26,7 +26,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 
-public class ForumAdapter extends RecyclerView.Adapter {
+public class ForumAdapter extends RecyclerView.Adapter implements View.OnClickListener {
 
     private static final int VIEW_TYPE_TEXT_POST = 1;
     private static final int VIEW_TYPE_IMAGE_POST = 2;
@@ -64,6 +64,7 @@ public class ForumAdapter extends RecyclerView.Adapter {
         View view;
         if(i == VIEW_TYPE_TEXT_POST) {
             view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.text_post_item, viewGroup, false);
+            view.setOnClickListener(this);
             return new TextPostHolder(view);
         } else if(i == VIEW_TYPE_LINK_POST) {
             view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.link_post_item, viewGroup, false);
@@ -72,8 +73,6 @@ public class ForumAdapter extends RecyclerView.Adapter {
             view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.image_post_item, viewGroup, false);
             return new ImagePostHolder(view);
         }
-        /*view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.text_post_item, viewGroup, false);
-        return new TextPostHolder(view);*/
     }
 
     @Override
@@ -96,6 +95,11 @@ public class ForumAdapter extends RecyclerView.Adapter {
     private String getPrettyDate(long timeStamp) {
         Date date = new Date(timeStamp);
         return DateUtils.getRelativeTimeSpanString(date.getTime(), Calendar.getInstance().getTimeInMillis(), DateUtils.MINUTE_IN_MILLIS).toString();
+    }
+
+    @Override
+    public void onClick(View v) {
+        int i = 1;
     }
 
     class TextPostHolder extends RecyclerView.ViewHolder {
