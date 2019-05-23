@@ -250,7 +250,7 @@ public class ForumAdapter extends RecyclerView.Adapter {
             bundle.putString(Constants.KEY_POST_POSTED_BY, linkPostPostedBy.getText().toString());
             bundle.putString(Constants.KEY_POST_DATE, linkPostDate.getText().toString());
             bundle.putString(Constants.KEY_POST_KIND, LinkPost.POST_KIND);
-            bundle.putString(Constants.KEY_IMAGE_POST_DESC, linkPostDescription.getText().toString());
+            bundle.putString(Constants.KEY_LINK_POST_DESC, linkPostDescription.getText().toString());
             bundle.putString(Constants.KEY_LINK_POST_IMAGE_PATH, linkPostImage.getContentDescription().toString());
             startCommentsActivity(bundle);
         }

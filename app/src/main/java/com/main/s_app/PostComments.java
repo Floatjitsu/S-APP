@@ -108,7 +108,7 @@ public class PostComments extends AppCompatActivity {
         TextView linkDesc = new TextView(this);
         linkDesc.setTextColor(ContextCompat.getColor(this, R.color.textColor));
         linkDesc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-        linkDesc.setText(mBundle.getString(Constants.KEY_IMAGE_POST_DESC));
+        linkDesc.setText(mBundle.getString(Constants.KEY_LINK_POST_DESC));
         mLinearLayout.addView(linkDesc);
     }
 

@@ -2,6 +2,11 @@ package com.main.s_app;
 
 class Constants {
 
+    /*
+    This class is for holding keys for a bundle which gets created to start
+    PostCommentsActivity and read the data inside there
+     */
+
     //Post
     static final String KEY_POST_ID = "postId";
     static final String KEY_POST_TITLE = "postTitle";
