@@ -105,6 +105,7 @@
         android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/post_comment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -118,7 +119,8 @@
             android:layout_height="wrap_content"
             app:fabSize="mini"
             android:layout_gravity="end"
-            android:src="@drawable/ic_send_white"/>
+            android:src="@drawable/ic_send_white"
+            android:onClick="onCommentPost"/>
 
     </LinearLayout>
 

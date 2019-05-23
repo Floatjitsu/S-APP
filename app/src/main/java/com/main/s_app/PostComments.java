@@ -1,17 +1,19 @@
 package com.main.s_app;
 
-import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.main.s_app.com.main.s_app.firebase.FirebaseForum;
 import com.main.s_app.com.main.s_app.firebase.ImagePost;
 import com.main.s_app.com.main.s_app.firebase.LinkPost;
 import com.main.s_app.com.main.s_app.firebase.TextPost;
@@ -25,6 +27,7 @@ public class PostComments extends AppCompatActivity {
     Toolbar mToolbar;
     LinearLayout mLinearLayout;
     TextView mPostTitle, mPostPostedBy, mPostDate, mPostId;
+    EditText mPostComment; //The new comment
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,7 @@ public class PostComments extends AppCompatActivity {
         mPostTitle = findViewById(R.id.post_comments_title);
         mPostPostedBy = findViewById(R.id.post_comments_posted_by);
         mPostId = findViewById(R.id.post_comments_id);
+        mPostComment = findViewById(R.id.post_comment);
 
         mBundle = getIntent().getExtras();
 
@@ -126,4 +130,14 @@ public class PostComments extends AppCompatActivity {
         return false;
     }
 
+    /*
+    Add a new comment on the post
+     */
+    public void onCommentPost(View view) {
+        String comment = mPostComment.getText().toString();
+        String postId = mPostId.getText().toString();
+
+        new FirebaseForum().addCommentToPost(comment, postId);
+        mPostComment.setText("");
+    }
 }

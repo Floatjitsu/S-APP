@@ -91,6 +91,34 @@ public class FirebaseForum {
     }
 
     /**
+     * Add a new comment to a specific post
+     * @param comment new comment
+     * @param postId id of the post
+     */
+    public void addCommentToPost(String comment, String postId) {
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null) {
+            final User user = new User(currentUser.getDisplayName(), currentUser.getUid());
+            final Comment comment1 = new Comment(comment, user);
+            DatabaseReference forumReference = mDatabase.getReference(FORUM_REFERENCE);
+            forumReference.orderByChild("postId").equalTo(postId)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for(DataSnapshot post : dataSnapshot.getChildren()) {
+                            post.getRef().child("comments").push().setValue(comment1);
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+        }
+    }
+
+    /**
      * Fill given RecyclerView with data from the Firebase Realtime DB
      * @param forum the recycler view
      */
@@ -121,7 +149,6 @@ public class FirebaseForum {
                                     posts.add(linkPost);
                                 break;
                         }
-                        //TODO: Add other cases for image and link post to switch
                     }
                 }
                 RecyclerView.Adapter forumAdapter = new ForumAdapter(posts, activityContext);
