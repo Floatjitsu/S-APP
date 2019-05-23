@@ -20,16 +20,64 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="@string/post_comments"/>
 
-
-    <!-- PLACEHOLDER FOR CONTENT FRAGMENTS
-            ALTERNATES FOR EVERY POST TYPE (IMAGE, TEXT, LINK) -->
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/post_comments_placeholder"
+    <ImageView
+        android:id="@+id/user_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/toolbar_post_comments"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginStart="8dp"
+        android:src="@drawable/ic_person"
+        android:contentDescription="@string/user"/>
+
+    <TextView
+        android:id="@+id/post_comments_posted_by"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_post_comments"
+        app:layout_constraintLeft_toRightOf="@id/user_logo"
+        android:text="@string/post_posted_by"
+        android:layout_marginTop="2dp"
+        android:layout_marginStart="3dp"/>
+
+    <TextView
+        android:id="@+id/post_comments_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_post_comments"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="2dp"
+        android:text="@string/post_date"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        android:id="@+id/post_comments_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/user_logo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:textSize="18sp"
+        android:textColor="@color/textColor"
+        android:text="@string/post_title"/>
+
+
+    <!-- PLACEHOLDER FOR CONTENT FRAGMENTS
+            ALTERNATES FOR EVERY POST TYPE (IMAGE, TEXT, LINK) -->
+    <LinearLayout
+        android:id="@+id/post_comments_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/post_comments_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal">
+
+
+    </LinearLayout>
 
 
     <!-- COMMENTS OF THE POST IN A RECYCLER VIEW -->
