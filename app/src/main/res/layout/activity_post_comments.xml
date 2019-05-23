@@ -41,6 +41,14 @@
         android:layout_marginStart="3dp"/>
 
     <TextView
+        android:id="@+id/post_comments_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_post_comments"
+        app:layout_constraintLeft_toRightOf="@id/post_comments_posted_by"
+        android:visibility="invisible"/>
+
+    <TextView
         android:id="@+id/post_comments_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

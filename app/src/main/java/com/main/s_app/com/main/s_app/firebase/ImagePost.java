@@ -2,7 +2,7 @@ package com.main.s_app.com.main.s_app.firebase;
 
 public class ImagePost extends Post {
 
-    static final String POST_KIND = "image";
+    public static final String POST_KIND = "image";
     private String imageUri;
     private String imageDescription;
 

@@ -2,6 +2,8 @@ package com.main.s_app;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -149,10 +151,11 @@ public class ForumAdapter extends RecyclerView.Adapter {
         }
     }
 
-    class ImagePostHolder extends RecyclerView.ViewHolder {
+    class ImagePostHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView imagePostTitle, imagePostDesc, imagePostPostedBy, imagePostDate, imagePostId;
         ImageView imagePostImage;
+        String imagePath;
 
         ImagePostHolder(@NonNull View itemView) {
             super(itemView);
@@ -162,6 +165,7 @@ public class ForumAdapter extends RecyclerView.Adapter {
             imagePostDate = itemView.findViewById(R.id.image_post_date);
             imagePostId = itemView.findViewById(R.id.post_id);
             imagePostImage = itemView.findViewById(R.id.image_post_image);
+            itemView.setOnClickListener(this);
         }
 
         void bind(ImagePost imagePost) {
@@ -172,6 +176,23 @@ public class ForumAdapter extends RecyclerView.Adapter {
             imagePostId.setText(imagePost.getPostId());
             StorageReference reference = FirebaseStorage.getInstance().getReference().child("/images/" + imagePost.getImageUri());
             GlideApp.with(mActivityContext).load(reference).into(imagePostImage);
+            imagePath = "/images/" + imagePost.getImageUri();
+        }
+
+        /*
+        OnClick Event for a Image Post
+         */
+        @Override
+        public void onClick(View v) {
+            Bundle bundle = new Bundle();
+            bundle.putString(Constants.KEY_POST_TITLE, imagePostTitle.getText().toString());
+            bundle.putString(Constants.KEY_POST_ID, imagePostId.getText().toString());
+            bundle.putString(Constants.KEY_POST_POSTED_BY, imagePostPostedBy.getText().toString());
+            bundle.putString(Constants.KEY_POST_DATE, imagePostDate.getText().toString());
+            bundle.putString(Constants.KEY_POST_KIND, ImagePost.POST_KIND);
+            bundle.putString(Constants.KEY_IMAGE_POST_DESC, imagePostDesc.getText().toString());
+            bundle.putString(Constants.KEY_IMAGE_POST_IMAGE_PATH, imagePath);
+            startCommentsActivity(bundle);
         }
     }
 
