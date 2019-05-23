@@ -196,10 +196,11 @@ public class ForumAdapter extends RecyclerView.Adapter {
         }
     }
 
-    class LinkPostHolder extends RecyclerView.ViewHolder {
+    class LinkPostHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView linkPostTitle, linkPostDescription, linkPostPostedBy, linkPostDate, linkPostId, linkPostUrl;
         ImageView linkPostImage;
+        final String imagePath = "";
 
         LinkPostHolder(@NonNull View itemView) {
             super(itemView);
@@ -210,6 +211,7 @@ public class ForumAdapter extends RecyclerView.Adapter {
             linkPostPostedBy = itemView.findViewById(R.id.link_post_posted_by);
             linkPostImage = itemView.findViewById(R.id.link_post_image);
             linkPostUrl = itemView.findViewById(R.id.link_post_url);
+            itemView.setOnClickListener(this);
         }
 
         void bind(LinkPost linkPost) {
@@ -232,10 +234,25 @@ public class ForumAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onPos(SourceContent sourceContent, boolean b) {
                     urlDescription.setText(sourceContent.getDescription());
+                    //Save the download path from the image as contentDescription
+                    urlImage.setContentDescription(sourceContent.getImages().get(0));
                     GlideApp.with(mActivityContext).load(sourceContent.getImages().get(0)).into(urlImage);
                 }
             };
             textCrawler.makePreview(callback, url);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Bundle bundle = new Bundle();
+            bundle.putString(Constants.KEY_POST_TITLE, linkPostTitle.getText().toString());
+            bundle.putString(Constants.KEY_POST_ID, linkPostId.getText().toString());
+            bundle.putString(Constants.KEY_POST_POSTED_BY, linkPostPostedBy.getText().toString());
+            bundle.putString(Constants.KEY_POST_DATE, linkPostDate.getText().toString());
+            bundle.putString(Constants.KEY_POST_KIND, LinkPost.POST_KIND);
+            bundle.putString(Constants.KEY_IMAGE_POST_DESC, linkPostDescription.getText().toString());
+            bundle.putString(Constants.KEY_LINK_POST_IMAGE_PATH, linkPostImage.getContentDescription().toString());
+            startCommentsActivity(bundle);
         }
     }
 }

@@ -2,7 +2,7 @@ package com.main.s_app.com.main.s_app.firebase;
 
 public class LinkPost extends Post {
 
-    static final String POST_KIND = "link";
+    public static final String POST_KIND = "link";
     private String url;
 
     LinkPost() {}

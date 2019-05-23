@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.main.s_app.com.main.s_app.firebase.ImagePost;
+import com.main.s_app.com.main.s_app.firebase.LinkPost;
 import com.main.s_app.com.main.s_app.firebase.TextPost;
 
 import java.util.Objects;
@@ -51,7 +52,7 @@ public class PostComments extends AppCompatActivity {
         mPostPostedBy.setText(Objects.requireNonNull(mBundle.getString(Constants.KEY_POST_POSTED_BY)).replace("Posted by", ""));
         mPostTitle.setText(mBundle.getString(Constants.KEY_POST_TITLE));
         mPostId.setText(mBundle.getString(Constants.KEY_POST_ID));
-        //Check which kind of posts got pressed in the forum
+        //Check which kind of posts got pressed in the forum and initialize it
         switch (Objects.requireNonNull(mBundle.getString(Constants.KEY_POST_KIND))) {
             case TextPost.POST_KIND:
                 initTextPost();
@@ -59,8 +60,10 @@ public class PostComments extends AppCompatActivity {
             case ImagePost.POST_KIND:
                 initImagePost();
                 break;
+            case LinkPost.POST_KIND:
+                initLinkPost();
+                break;
         }
-        //TODO: Add other case for link post
     }
 
     /*
@@ -90,6 +93,23 @@ public class PostComments extends AppCompatActivity {
         imageDesc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
         imageDesc.setText(mBundle.getString(Constants.KEY_IMAGE_POST_DESC));
         mLinearLayout.addView(imageDesc);
+    }
+
+    /*
+    Initialize a Preview of a Link Post
+     */
+    private void initLinkPost() {
+        ImageView image = new ImageView(this);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(150, 150);
+        layoutParams.setMargins(0, 0, 35, 0);
+        image.setLayoutParams(layoutParams);
+        GlideApp.with(this).load(mBundle.getString(Constants.KEY_LINK_POST_IMAGE_PATH)).into(image);
+        mLinearLayout.addView(image);
+        TextView linkDesc = new TextView(this);
+        linkDesc.setTextColor(ContextCompat.getColor(this, R.color.textColor));
+        linkDesc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+        linkDesc.setText(mBundle.getString(Constants.KEY_IMAGE_POST_DESC));
+        mLinearLayout.addView(linkDesc);
     }
 
     private void setUpToolbar() {

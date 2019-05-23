@@ -16,5 +16,9 @@ class Constants {
     static final String KEY_IMAGE_POST_DESC = "imagePostDescription";
     static final String KEY_IMAGE_POST_IMAGE_PATH = "imagePostImagePath";
 
+    //Link Post
+    static final String KEY_LINK_POST_IMAGE_PATH = "linkPostImagePath";
+    static final String KEY_LINK_POST_DESC = "linkPostDescription";
+
 
 }
