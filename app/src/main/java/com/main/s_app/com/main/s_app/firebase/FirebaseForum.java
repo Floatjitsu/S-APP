@@ -99,7 +99,7 @@ public class FirebaseForum {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null) {
             final User user = new User(currentUser.getDisplayName(), currentUser.getUid());
-            final Comment comment1 = new Comment(comment, user);
+            final Comment comment1 = new Comment(comment, user, new Date().getTime());
             DatabaseReference forumReference = mDatabase.getReference(FORUM_REFERENCE);
             forumReference.orderByChild("postId").equalTo(postId)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -121,6 +121,7 @@ public class FirebaseForum {
     /**
      * Fill given RecyclerView with data from the Firebase Realtime DB
      * @param forum the recycler view
+     * @param activityContext the context where the recycler view is located
      */
     public void getForumToRecyclerView(final RecyclerView forum, final Context activityContext) {
         DatabaseReference forumReference = mDatabase.getReference(FORUM_REFERENCE);

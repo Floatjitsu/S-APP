@@ -1,5 +1,7 @@
 package com.main.s_app.com.main.s_app.firebase;
 
+import java.util.ArrayList;
+
 public class Post {
 
     private String postId;
