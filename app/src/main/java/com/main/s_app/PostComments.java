@@ -87,20 +87,9 @@ public class PostComments extends AppCompatActivity {
         mLinearLayout = findViewById(R.id.post_comments_placeholder);
 
         initPost();
-
-        ArrayList<Comment> comments = new ArrayList<>();
-        comments.add(new Comment("Test", new User("Floatjitsu", "1234"), new Date().getTime()));
-        comments.add(new Comment("My Comment", new User("JohnnyDoe", "1234"), new Date().getTime()));
-        comments.add(new Comment("Another Comment", new User("Floatjitsu", "1234"), new Date().getTime()));
-        comments.add(new Comment("Another Comment", new User("Floatjitsu", "1234"), new Date().getTime()));
-        comments.add(new Comment("Another Comment", new User("Floatjitsu", "1234"), new Date().getTime()));
-        comments.add(new Comment("Another Comment", new User("Floatjitsu", "1234"), new Date().getTime()));
-        comments.add(new Comment("Another Comment", new User("Floatjitsu", "1234"), new Date().getTime()));
-        mCommentAdapter = new PostCommentsAdapter(comments);
-        mComments.setAdapter(mCommentAdapter);
+        new FirebaseForum().getPostCommentsToRecyclerView(mPostId.getText().toString(), mComments);
 
     }
-
 
     private void initPost() {
         //Post title, date, id and posted by are always part of a post

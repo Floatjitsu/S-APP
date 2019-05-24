@@ -12,8 +12,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.main.s_app.ForumAdapter;
+import com.main.s_app.PostCommentsAdapter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.UUID;
 import java.util.Date;
 
@@ -156,6 +159,34 @@ public class FirebaseForum {
 
             }
         });
+    }
+
+    /**
+     * Fill given RecyclerView with comments for a post from the Firebase Realtime DB
+     * @param postId to identify the commented post
+     * @param comments the recycler view
+     */
+    public void getPostCommentsToRecyclerView(String postId, final RecyclerView comments) {
+        DatabaseReference forumReference = mDatabase.getReference(FORUM_REFERENCE);
+        forumReference.orderByChild("postId").equalTo(postId)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        ArrayList<Comment> comments1 = new ArrayList<>();
+                        for(DataSnapshot post : dataSnapshot.getChildren()) {
+                            for(DataSnapshot comment : post.child("comments").getChildren()) {
+                                comments1.add(comment.getValue(Comment.class));
+                            }
+                        }
+                        RecyclerView.Adapter commentsAdapter = new PostCommentsAdapter(comments1);
+                        comments.setAdapter(commentsAdapter);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
     }
 
     /**

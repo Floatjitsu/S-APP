@@ -9,9 +9,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.main.s_app.com.main.s_app.firebase.Comment;
+import com.main.s_app.com.main.s_app.firebase.Post;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
 public class PostCommentsAdapter extends RecyclerView.Adapter<PostCommentsAdapter.ViewHolder> {
@@ -19,6 +22,13 @@ public class PostCommentsAdapter extends RecyclerView.Adapter<PostCommentsAdapte
     private ArrayList<Comment> mComments;
 
     public PostCommentsAdapter(ArrayList<Comment> mComments) {
+        //Sort Array List by Timestamp
+        Collections.sort(mComments, new Comparator<Comment>() {
+            @Override
+            public int compare(Comment o1, Comment o2) {
+                return (int) (o2.getTimeStamp() - o1.getTimeStamp());
+            }
+        });
         this.mComments = mComments;
     }
 
