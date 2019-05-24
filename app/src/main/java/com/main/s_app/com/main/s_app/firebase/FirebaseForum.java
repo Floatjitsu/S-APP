@@ -102,7 +102,14 @@ public class FirebaseForum {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for(DataSnapshot post : dataSnapshot.getChildren()) {
+                            //Insert new comment
                             post.getRef().child("comments").push().setValue(comment1);
+                            Post currentPost = post.getValue(Post.class);
+                            //Update the commentsCount Attribute of the post
+                            if(currentPost != null) {
+                                DatabaseReference commentsCountRef = post.getRef().child("commentsCount");
+                                commentsCountRef.setValue(currentPost.getCommentsCount() + 1);
+                            }
                         }
                     }
                     @Override

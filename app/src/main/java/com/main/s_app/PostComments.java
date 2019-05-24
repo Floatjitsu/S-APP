@@ -1,5 +1,7 @@
 package com.main.s_app;
 
+import android.app.Activity;
+import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -180,5 +183,12 @@ public class PostComments extends AppCompatActivity {
 
         new FirebaseForum().addCommentToPost(comment, postId);
         mPostComment.setText("");
+        hideSoftKeyboard(this, view);
+        mPostComment.clearFocus();
+    }
+
+    void hideSoftKeyboard(Activity activity, View v) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
     }
 }

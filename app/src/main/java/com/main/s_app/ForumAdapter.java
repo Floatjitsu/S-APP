@@ -134,7 +134,7 @@ public class ForumAdapter extends RecyclerView.Adapter {
             textPostPostedBy.append(" " + textPost.getUser().getUsername());
             textPostDate.setText(getPrettyDate(textPost.getTimeStamp()));
             textPostId.setText(textPost.getPostId());
-            //TODO: Get number of comments and set it to textPostCommentsCount
+            textPostCommentsCount.setText(String.valueOf(textPost.getCommentsCount()));
         }
 
         /*
