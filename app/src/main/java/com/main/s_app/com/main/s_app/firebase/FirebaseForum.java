@@ -15,8 +15,6 @@ import com.main.s_app.ForumAdapter;
 import com.main.s_app.PostCommentsAdapter;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.UUID;
 import java.util.Date;
 
