@@ -155,7 +155,7 @@ public class ForumAdapter extends RecyclerView.Adapter {
 
     class ImagePostHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView imagePostTitle, imagePostDesc, imagePostPostedBy, imagePostDate, imagePostId;
+        TextView imagePostTitle, imagePostDesc, imagePostPostedBy, imagePostDate, imagePostId, imagePostCommentCount;
         ImageView imagePostImage;
         String imagePath;
 
@@ -167,6 +167,7 @@ public class ForumAdapter extends RecyclerView.Adapter {
             imagePostDate = itemView.findViewById(R.id.image_post_date);
             imagePostId = itemView.findViewById(R.id.post_id);
             imagePostImage = itemView.findViewById(R.id.image_post_image);
+            imagePostCommentCount = itemView.findViewById(R.id.image_post_comments_count);
             itemView.setOnClickListener(this);
         }
 
@@ -179,6 +180,7 @@ public class ForumAdapter extends RecyclerView.Adapter {
             StorageReference reference = FirebaseStorage.getInstance().getReference().child("/images/" + imagePost.getImageUri());
             GlideApp.with(mActivityContext).load(reference).into(imagePostImage);
             imagePath = "/images/" + imagePost.getImageUri();
+            imagePostCommentCount.setText(String.valueOf(imagePost.getCommentsCount()));
         }
 
         /*
@@ -200,7 +202,8 @@ public class ForumAdapter extends RecyclerView.Adapter {
 
     class LinkPostHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView linkPostTitle, linkPostDescription, linkPostPostedBy, linkPostDate, linkPostId, linkPostUrl;
+        TextView linkPostTitle, linkPostDescription, linkPostPostedBy, linkPostDate, linkPostId,
+                    linkPostUrl, linkPostCommentCount;
         ImageView linkPostImage;
         final String imagePath = "";
 
@@ -213,6 +216,7 @@ public class ForumAdapter extends RecyclerView.Adapter {
             linkPostPostedBy = itemView.findViewById(R.id.link_post_posted_by);
             linkPostImage = itemView.findViewById(R.id.link_post_image);
             linkPostUrl = itemView.findViewById(R.id.link_post_url);
+            linkPostCommentCount = itemView.findViewById(R.id.link_post_comment_count);
             itemView.setOnClickListener(this);
         }
 
@@ -222,6 +226,7 @@ public class ForumAdapter extends RecyclerView.Adapter {
             linkPostDate.setText(getPrettyDate(linkPost.getTimeStamp()));
             linkPostId.setText(linkPost.getPostId());
             linkPostUrl.setText(linkPost.getUrl());
+            linkPostCommentCount.setText(String.valueOf(linkPost.getCommentsCount()));
             setUrlImageDesc(linkPost.getUrl(), linkPostImage, linkPostDescription);
         }
 

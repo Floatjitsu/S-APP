@@ -75,6 +75,17 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/image_post_comments_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textColor="@color/colorSecondaryLight"
+        android:drawableStart="@drawable/ic_comment_white"
+        android:drawablePadding="4dp"
+        android:text="@string/post_zero_comments"/>
+
 
 
 </android.support.constraint.ConstraintLayout>
