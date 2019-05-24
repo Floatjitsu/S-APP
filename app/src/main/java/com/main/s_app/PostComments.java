@@ -3,21 +3,30 @@ package com.main.s_app;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.main.s_app.com.main.s_app.firebase.Comment;
 import com.main.s_app.com.main.s_app.firebase.FirebaseForum;
 import com.main.s_app.com.main.s_app.firebase.ImagePost;
 import com.main.s_app.com.main.s_app.firebase.LinkPost;
 import com.main.s_app.com.main.s_app.firebase.TextPost;
+import com.main.s_app.com.main.s_app.firebase.User;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Objects;
 
 public class PostComments extends AppCompatActivity {
@@ -28,6 +37,10 @@ public class PostComments extends AppCompatActivity {
     LinearLayout mLinearLayout;
     TextView mPostTitle, mPostPostedBy, mPostDate, mPostId;
     EditText mPostComment; //The new comment
+    ImageButton mPostCommentButton;
+
+    RecyclerView mComments; //Post comments
+    RecyclerView.Adapter mCommentAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +54,53 @@ public class PostComments extends AppCompatActivity {
         mPostTitle = findViewById(R.id.post_comments_title);
         mPostPostedBy = findViewById(R.id.post_comments_posted_by);
         mPostId = findViewById(R.id.post_comments_id);
-        mPostComment = findViewById(R.id.post_comment);
+        mPostCommentButton = findViewById(R.id.new_comment_button);
+        mPostComment = findViewById(R.id.post_new_comment);
+
+        mPostComment.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(s.toString().trim().length() == 0) {
+                    mPostCommentButton.setEnabled(false);
+                } else {
+                    mPostCommentButton.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        mComments = findViewById(R.id.rv_post_comments);
+        mComments.hasFixedSize();
+        mComments.setLayoutManager(new LinearLayoutManager(this));
 
         mBundle = getIntent().getExtras();
 
         mLinearLayout = findViewById(R.id.post_comments_placeholder);
 
         initPost();
+
+        ArrayList<Comment> comments = new ArrayList<>();
+        comments.add(new Comment("Test", new User("Floatjitsu", "1234"), new Date().getTime()));
+        comments.add(new Comment("My Comment", new User("JohnnyDoe", "1234"), new Date().getTime()));
+        comments.add(new Comment("Another Comment", new User("Floatjitsu", "1234"), new Date().getTime()));
+        comments.add(new Comment("Another Comment", new User("Floatjitsu", "1234"), new Date().getTime()));
+        comments.add(new Comment("Another Comment", new User("Floatjitsu", "1234"), new Date().getTime()));
+        comments.add(new Comment("Another Comment", new User("Floatjitsu", "1234"), new Date().getTime()));
+        comments.add(new Comment("Another Comment", new User("Floatjitsu", "1234"), new Date().getTime()));
+        mCommentAdapter = new PostCommentsAdapter(comments);
+        mComments.setAdapter(mCommentAdapter);
+
     }
+
 
     private void initPost() {
         //Post title, date, id and posted by are always part of a post

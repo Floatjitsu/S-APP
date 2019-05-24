@@ -46,6 +46,9 @@
     <string name="post_date">Post Date</string>
     <string name="post_comments">Post Comments</string>
     <string name="post_add_comment">Add new comment &#8230;</string>
+    <string name="post_comment_username">Comment Username</string>
+    <string name="post_comment_date">Comment Date</string>
+    <string name="post_comment">Comment</string>
 
     <!-- Image Post -->
     <string name="image_post">Image post</string>

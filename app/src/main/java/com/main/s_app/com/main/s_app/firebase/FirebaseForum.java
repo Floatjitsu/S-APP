@@ -1,9 +1,7 @@
 package com.main.s_app.com.main.s_app.firebase;
 
 import android.content.Context;
-import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -15,9 +13,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.main.s_app.ForumAdapter;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.UUID;
 import java.util.Date;
