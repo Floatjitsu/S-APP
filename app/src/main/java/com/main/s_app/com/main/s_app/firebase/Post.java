@@ -9,6 +9,7 @@ public class Post {
     private long timeStamp;
     private String postKind;
     private User user;
+    private int commentsCount;
 
     public Post() {}
 
@@ -18,6 +19,7 @@ public class Post {
         this.timeStamp = timeStamp;
         this.postKind = postKind;
         this.user = user;
+        this.commentsCount = 0;
     }
 
     public Post(String postId, String postTitle, long timeStamp, User user) {
@@ -25,6 +27,14 @@ public class Post {
         this.postTitle = postTitle;
         this.timeStamp = timeStamp;
         this.user = user;
+    }
+
+    public int getCommentsCount() {
+        return commentsCount;
+    }
+
+    public void setCommentsCount(int commentsCount) {
+        this.commentsCount = commentsCount;
     }
 
     public String getPostKind() {

@@ -115,7 +115,7 @@ public class ForumAdapter extends RecyclerView.Adapter {
 
     class TextPostHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView textPostTitle, textPostContent, textPostPostedBy, textPostDate, textPostId;
+        TextView textPostTitle, textPostContent, textPostPostedBy, textPostDate, textPostId, textPostCommentsCount;
 
         TextPostHolder(@NonNull View itemView) {
             super(itemView);
@@ -124,6 +124,7 @@ public class ForumAdapter extends RecyclerView.Adapter {
             textPostPostedBy = itemView.findViewById(R.id.text_post_posted_by);
             textPostDate = itemView.findViewById(R.id.text_post_date);
             textPostId = itemView.findViewById(R.id.post_id);
+            textPostCommentsCount = itemView.findViewById(R.id.text_post_comment_counter);
             itemView.setOnClickListener(this);
         }
 
@@ -133,6 +134,7 @@ public class ForumAdapter extends RecyclerView.Adapter {
             textPostPostedBy.append(" " + textPost.getUser().getUsername());
             textPostDate.setText(getPrettyDate(textPost.getTimeStamp()));
             textPostId.setText(textPost.getPostId());
+            //TODO: Get number of comments and set it to textPostCommentsCount
         }
 
         /*

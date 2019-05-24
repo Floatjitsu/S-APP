@@ -49,6 +49,7 @@
     <string name="post_comment_username">Comment Username</string>
     <string name="post_comment_date">Comment Date</string>
     <string name="post_comment">Comment</string>
+    <string name="post_zero_comments">0</string>
 
     <!-- Image Post -->
     <string name="image_post">Image post</string>
