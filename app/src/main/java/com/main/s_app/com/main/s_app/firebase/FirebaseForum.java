@@ -3,6 +3,8 @@ package com.main.s_app.com.main.s_app.firebase;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -125,8 +127,9 @@ public class FirebaseForum {
      * Fill given RecyclerView with data from the Firebase Realtime DB
      * @param forum the recycler view
      * @param activityContext the context where the recycler view is located
+     * @param progressBar the progress bar of the forum fragment
      */
-    public void getForumToRecyclerView(final RecyclerView forum, final Context activityContext) {
+    public void getForumToRecyclerView(final RecyclerView forum, final Context activityContext, final ProgressBar progressBar) {
         DatabaseReference forumReference = mDatabase.getReference(FORUM_REFERENCE);
         forumReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -157,6 +160,7 @@ public class FirebaseForum {
                 }
                 RecyclerView.Adapter forumAdapter = new ForumAdapter(posts, activityContext);
                 forum.setAdapter(forumAdapter);
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override

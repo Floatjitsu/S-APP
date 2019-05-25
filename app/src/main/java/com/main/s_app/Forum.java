@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.main.s_app.com.main.s_app.firebase.FirebaseForum;
 
@@ -18,6 +19,7 @@ public class Forum extends Fragment {
 
     Toolbar mToolbar;
     RecyclerView mForum;
+    ProgressBar mProgressBar;
 
     @Nullable
     @Override
@@ -29,12 +31,14 @@ public class Forum extends Fragment {
             ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar); //Set Toolbar
         }
 
+        mProgressBar = myView.findViewById(R.id.forum_loading_spinner);
+
         mForum = myView.findViewById(R.id.rv_forum);
         mForum.hasFixedSize();
         mForum.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         //Fill Fragment Content with Data from Firebase DB
-        new FirebaseForum().getForumToRecyclerView(mForum, getActivity());
+        new FirebaseForum().getForumToRecyclerView(mForum, getActivity(), mProgressBar);
 
         return myView;
     }
