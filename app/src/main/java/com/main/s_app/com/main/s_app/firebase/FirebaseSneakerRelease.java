@@ -3,6 +3,8 @@ package com.main.s_app.com.main.s_app.firebase;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,7 +24,15 @@ public class FirebaseSneakerRelease {
         mDatabase = FirebaseDatabase.getInstance();
     }
 
-    public void getSneakerReleasesToRecyclerView(String date, final RecyclerView sneakerReleases, final Context activityContext) {
+    /**
+     * Fills the sneaker release recycler view with data from the Firebase DB
+     * by a given date
+     * @param date the date chosen by the user
+     * @param sneakerReleases the recycler view
+     * @param activityContext the activity context where the recycler view is located
+     * @param nothingFound the text view shown if no data got found
+     */
+    public void getSneakerReleasesToRecyclerView(String date, final RecyclerView sneakerReleases, final Context activityContext, final TextView nothingFound) {
         DatabaseReference sneakersRef = mDatabase.getReference(SNEAKER_PATH);
         sneakersRef.orderByChild("releaseDate").equalTo(date)
                 .addValueEventListener(new ValueEventListener() {
@@ -32,7 +42,13 @@ public class FirebaseSneakerRelease {
                         for(DataSnapshot sneaker : dataSnapshot.getChildren()) {
                             sneakers.add(sneaker.getValue(Sneaker.class));
                         }
+                        if(sneakers.size() > 0) {
+                            nothingFound.setVisibility(View.GONE);
+                        } else {
+                            nothingFound.setVisibility(View.VISIBLE);
+                        }
                         sneakerReleases.setAdapter(new SneakerReleaseAdapter(sneakers, activityContext));
+
                     }
 
                     @Override

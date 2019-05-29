@@ -21,8 +21,17 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_sneaker_releases"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/text_nothing_found"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/bgColorLight"/>
+            android:text="@string/nothing_found"
+            android:textColor="@color/bgColor"
+            android:drawableTop="@drawable/no_sneaker_found"
+            android:drawablePadding="8dp"
+            android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>
 

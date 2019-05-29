@@ -81,5 +81,6 @@
     <!-- Calendar -->
     <string name="sneaker_model">Sneaker Model</string>
     <string name="sneaker_brand">Sneaker Brand</string>
+    <string name="nothing_found">No Sneaker releases for the selected date found</string>
 
 </resources>
