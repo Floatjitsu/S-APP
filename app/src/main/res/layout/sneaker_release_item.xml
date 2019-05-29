@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/bgColorNav"
+    android:padding="20dp"
+    android:layout_marginBottom="2dp">
+
+    <ImageView
+        android:id="@+id/sneaker_model"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/sneaker_model"
+        android:contentDescription="@string/sneaker_model"/>
+
+    <TextView
+        android:id="@+id/sneaker_brand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/sneaker_model"
+        android:textSize="20sp"
+        android:text="@string/sneaker_brand"
+        android:textColor="@color/colorSecondaryDark"
+        android:layout_marginStart="15dp"/>
+
+    <TextView
+        android:id="@+id/sneaker_model_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/sneaker_brand"
+        app:layout_constraintLeft_toRightOf="@id/sneaker_model"
+        android:textSize="16sp"
+        android:text="@string/sneaker_model"
+        android:textColor="@color/colorSecondaryDark"
+        android:layout_marginStart="15dp"/>
+
+</android.support.constraint.ConstraintLayout>

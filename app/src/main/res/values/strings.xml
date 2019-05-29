@@ -78,4 +78,8 @@
     <!-- News Menu -->
     <string name="manage_news_feed">Manage your News feed</string>
 
+    <!-- Calendar -->
+    <string name="sneaker_model">Sneaker Model</string>
+    <string name="sneaker_brand">Sneaker Brand</string>
+
 </resources>
