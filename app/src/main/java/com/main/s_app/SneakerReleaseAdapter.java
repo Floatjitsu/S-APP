@@ -44,10 +44,6 @@ public class SneakerReleaseAdapter extends RecyclerView.Adapter<SneakerReleaseAd
     @Override
     public void onBindViewHolder(@NonNull SneakerReleaseAdapter.ViewHolder viewHolder, int i) {
         viewHolder.bind(sneakers.get(i));
-        /*viewHolder.sneakerBrand.setText(sneakers.get(i).getBrandName());
-        viewHolder.sneakerModelName.setText(sneakers.get(i).getModelName());
-        StorageReference modelImageRef = FirebaseStorage.getInstance().getReference().child("/images/" + sneakers.get(i).getImageUri());
-        GlideApp.with(context).load(modelImageRef).into(viewHolder.sneakerModelImage); */
     }
 
     @Override
@@ -77,7 +73,7 @@ public class SneakerReleaseAdapter extends RecyclerView.Adapter<SneakerReleaseAd
             StorageReference modelImageRef = FirebaseStorage.getInstance().getReference().child("/images/" + s.getImageUri());
             GlideApp.with(context).load(modelImageRef).into(sneakerModelImage);
 
-            @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             try {
                 Date d = dateFormat.parse(s.getReleaseDate());
                 timeStamp = d.getTime();
