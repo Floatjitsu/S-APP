@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/bgContentHolderColor"
-    >
+    android:background="@color/bgColorLight">
 
 
     <android.support.v7.widget.Toolbar
@@ -16,9 +15,7 @@
         app:titleTextColor="@color/bodyTextColor"
         app:title="@string/news"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-
-        />
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_news"
@@ -26,10 +23,5 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar_news"
         android:layout_marginBottom="50dp"/>
-
-
-
-
-
 
 </RelativeLayout>

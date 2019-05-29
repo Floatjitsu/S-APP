@@ -8,7 +8,7 @@
     android:layout_marginBottom="2dp">
 
     <ImageView
-        android:id="@+id/sneaker_model"
+        android:id="@+id/sneaker_model_image"
         android:layout_width="80dp"
         android:layout_height="80dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/sneaker_model"
+        app:layout_constraintLeft_toRightOf="@id/sneaker_model_image"
         android:textSize="20sp"
         android:text="@string/sneaker_brand"
         android:textColor="@color/colorSecondaryDark"
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/sneaker_brand"
-        app:layout_constraintLeft_toRightOf="@id/sneaker_model"
+        app:layout_constraintLeft_toRightOf="@id/sneaker_model_image"
         android:textSize="16sp"
         android:text="@string/sneaker_model"
         android:textColor="@color/colorSecondaryDark"

@@ -1,5 +1,6 @@
 package com.main.s_app.com.main.s_app.firebase;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 
@@ -21,7 +22,7 @@ public class FirebaseSneakerRelease {
         mDatabase = FirebaseDatabase.getInstance();
     }
 
-    public void getSneakerReleasesToRecyclerView(String date, final RecyclerView sneakerReleases) {
+    public void getSneakerReleasesToRecyclerView(String date, final RecyclerView sneakerReleases, final Context activityContext) {
         DatabaseReference sneakersRef = mDatabase.getReference(SNEAKER_PATH);
         sneakersRef.orderByChild("releaseDate").equalTo(date)
                 .addValueEventListener(new ValueEventListener() {
@@ -31,7 +32,7 @@ public class FirebaseSneakerRelease {
                         for(DataSnapshot sneaker : dataSnapshot.getChildren()) {
                             sneakers.add(sneaker.getValue(Sneaker.class));
                         }
-                        sneakerReleases.setAdapter(new SneakerReleaseAdapter(sneakers));
+                        sneakerReleases.setAdapter(new SneakerReleaseAdapter(sneakers, activityContext));
                     }
 
                     @Override
