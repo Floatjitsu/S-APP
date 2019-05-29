@@ -80,7 +80,7 @@
             android:textSize="14sp"
             android:gravity="fill"
             android:layout_marginStart="10dp"
-            android:text="@string/link_post_description"/>
+            android:text="@string/link_post_description" />
 
     </LinearLayout>
 

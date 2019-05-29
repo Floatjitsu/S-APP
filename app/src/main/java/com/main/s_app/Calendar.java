@@ -14,13 +14,17 @@ import android.widget.CalendarView;
 import android.widget.TextView;
 
 import com.main.s_app.com.main.s_app.firebase.FirebaseSneakerRelease;
+import com.main.s_app.com.main.s_app.firebase.Sneaker;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Calendar extends Fragment {
 
     final FirebaseSneakerRelease firebaseSneakerRef = new FirebaseSneakerRelease();
+    @SuppressLint("SimpleDateFormat") final DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
     RecyclerView mSneakerRelease;
     CalendarView mCalendar;
@@ -36,18 +40,35 @@ public class Calendar extends Fragment {
         mSneakerRelease = myView.findViewById(R.id.rv_sneaker_releases);
         mSneakerRelease.hasFixedSize();
         mSneakerRelease.setLayoutManager(new LinearLayoutManager(getActivity()));
+/*
+        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        String date = format.format(mCalendar.getDate());
+        firebaseSneakerRef.addReleaseToFirebase(new Sneaker("Nike", "Shox", date, "nike_sneaker.jpg"));
+        firebaseSneakerRef.addReleaseToFirebase(new Sneaker("Reebok", "Classic", date, "nike_sneaker.jpg"));
+        firebaseSneakerRef.addReleaseToFirebase(new Sneaker("Nike", "Free", "01/06/2019", "nike_sneaker.jpg")); */
 
-        @SuppressLint("SimpleDateFormat") DateFormat format = new SimpleDateFormat("dd.M.YYYY");
+
         firebaseSneakerRef.getSneakerReleasesToRecyclerView(format.format(mCalendar.getDate()), mSneakerRelease, getActivity(), mNothingFound);
 
         mCalendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                String date = dayOfMonth + "." + (month + 1) + "." + year;
-                firebaseSneakerRef.getSneakerReleasesToRecyclerView(date, mSneakerRelease, getActivity(), mNothingFound);
+                firebaseSneakerRef.getSneakerReleasesToRecyclerView(getDate(year, month, dayOfMonth), mSneakerRelease, getActivity(), mNothingFound);
             }
         });
 
         return myView;
+    }
+
+    private String getDate(int year, int month, int dayOfMonth) {
+        int nMonth = month + 1;
+        String m = String.valueOf(nMonth);
+        if(m.length() < 2) {
+            m = "0" + nMonth;
+        }
+        if(String.valueOf(dayOfMonth).length() < 2) {
+            return "0" + dayOfMonth + "/" + m + "/" + year;
+        }
+        return dayOfMonth + "/" + m + "/" + year;
     }
 }
