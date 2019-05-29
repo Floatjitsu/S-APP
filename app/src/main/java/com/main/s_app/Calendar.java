@@ -14,17 +14,15 @@ import android.widget.CalendarView;
 import android.widget.TextView;
 
 import com.main.s_app.com.main.s_app.firebase.FirebaseSneakerRelease;
-import com.main.s_app.com.main.s_app.firebase.Sneaker;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class Calendar extends Fragment {
 
     final FirebaseSneakerRelease firebaseSneakerRef = new FirebaseSneakerRelease();
-    @SuppressLint("SimpleDateFormat") final DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+    @SuppressLint("SimpleDateFormat")
+    final DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
     RecyclerView mSneakerRelease;
     CalendarView mCalendar;
@@ -40,13 +38,6 @@ public class Calendar extends Fragment {
         mSneakerRelease = myView.findViewById(R.id.rv_sneaker_releases);
         mSneakerRelease.hasFixedSize();
         mSneakerRelease.setLayoutManager(new LinearLayoutManager(getActivity()));
-/*
-        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        String date = format.format(mCalendar.getDate());
-        firebaseSneakerRef.addReleaseToFirebase(new Sneaker("Nike", "Shox", date, "nike_sneaker.jpg"));
-        firebaseSneakerRef.addReleaseToFirebase(new Sneaker("Reebok", "Classic", date, "nike_sneaker.jpg"));
-        firebaseSneakerRef.addReleaseToFirebase(new Sneaker("Nike", "Free", "01/06/2019", "nike_sneaker.jpg")); */
-
 
         firebaseSneakerRef.getSneakerReleasesToRecyclerView(format.format(mCalendar.getDate()), mSneakerRelease, getActivity(), mNothingFound);
 

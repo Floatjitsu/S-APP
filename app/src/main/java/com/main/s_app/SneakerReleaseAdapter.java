@@ -70,7 +70,7 @@ public class SneakerReleaseAdapter extends RecyclerView.Adapter<SneakerReleaseAd
         void bind(Sneaker s) {
             sneakerBrand.setText(s.getBrandName());
             sneakerModelName.setText(s.getModelName());
-            StorageReference modelImageRef = FirebaseStorage.getInstance().getReference().child("/images/" + s.getImageUri());
+            StorageReference modelImageRef = FirebaseStorage.getInstance().getReference().child("/images/shoe_models/" + s.getImageUri());
             GlideApp.with(context).load(modelImageRef).into(sneakerModelImage);
 
             @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
