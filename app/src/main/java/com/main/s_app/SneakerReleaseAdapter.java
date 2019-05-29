@@ -3,8 +3,10 @@ package com.main.s_app;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.provider.CalendarContract;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.EventLog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,6 +68,7 @@ public class SneakerReleaseAdapter extends RecyclerView.Adapter<SneakerReleaseAd
             sneakerModelName = itemView.findViewById(R.id.sneaker_model_name);
             sneakerModelImage = itemView.findViewById(R.id.sneaker_model_image);
             buttonAddReleaseDateToCalendar = itemView.findViewById(R.id.button_add_to_calendar);
+            buttonAddReleaseDateToCalendar.setOnClickListener(buttonListener());
         }
 
         void bind(Sneaker s) {
@@ -73,23 +76,28 @@ public class SneakerReleaseAdapter extends RecyclerView.Adapter<SneakerReleaseAd
             sneakerModelName.setText(s.getModelName());
             StorageReference modelImageRef = FirebaseStorage.getInstance().getReference().child("/images/" + s.getImageUri());
             GlideApp.with(context).load(modelImageRef).into(sneakerModelImage);
-/*
-            @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.M.YYYY");
+
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
             try {
                 Date d = dateFormat.parse(s.getReleaseDate());
                 timeStamp = d.getTime();
             } catch (ParseException ex) {
                 ex.printStackTrace();
-            } */
+            }
         }
 
         View.OnClickListener buttonListener() {
             return new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(Intent.ACTION_EDIT);
+                    Intent intent = new Intent(Intent.ACTION_INSERT);
                     intent.setType("vnd.android.cursor.item/event");
-
+                    intent.putExtra(CalendarContract.Events.TITLE,
+                            "Release of " + sneakerBrand.getText() + " " + sneakerModelName.getText());
+                    intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
+                    intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, timeStamp);
+                    intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, timeStamp);
+                    context.startActivity(intent);
                 }
             };
         }
