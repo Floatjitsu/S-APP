@@ -32,4 +32,17 @@
         android:layout_centerInParent="true"
         android:layout_below="@id/rv_news"/>
 
+    <TextView
+        android:id="@+id/text_no_subscriptions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/news_loading_spinner"
+        android:layout_centerInParent="true"
+        android:textColor="@color/colorPrimaryDark"
+        android:drawableTop="@drawable/ic_rss_feed_black_24dp"
+        android:text="@string/news_no_subscription"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:visibility="invisible"/>
+
 </RelativeLayout>

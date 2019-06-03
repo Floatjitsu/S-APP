@@ -23,6 +23,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -64,6 +65,7 @@ public class News extends Fragment {
     RecyclerView mNews;
     RecyclerView.Adapter mNewsAdapter;
     ProgressBar mProgressBar;
+    TextView mTextNoSubscriptions;
 
     @Nullable
     @Override
@@ -72,6 +74,7 @@ public class News extends Fragment {
 
         mToolbar = myView.findViewById(R.id.toolbar_news);
         mProgressBar = myView.findViewById(R.id.news_loading_spinner);
+        mTextNoSubscriptions = myView.findViewById(R.id.text_no_subscriptions);
 
         mNews = myView.findViewById(R.id.rv_news);
         mNews.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -90,6 +93,9 @@ public class News extends Fragment {
     public void onResume() {
         super.onResume();
         //Start parsing the RSS Feed
+        mNews.setVisibility(View.GONE);
+        mTextNoSubscriptions.setVisibility(View.GONE);
+        mProgressBar.setVisibility(View.VISIBLE);
         new RssFeedBackgroundHandler().execute(getUrlsByPreferences());
     }
 
@@ -160,12 +166,20 @@ public class News extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mNewsAdapter = new NewsAdapter(newsModelList, getActivity());
-                        mNews.setAdapter(mNewsAdapter);
                         mProgressBar.setVisibility(View.GONE);
+                        if(newsModelList.size() > 0) {
+                            mNews.setVisibility(View.VISIBLE);
+                            mNewsAdapter = new NewsAdapter(newsModelList, getActivity());
+                            mNews.setAdapter(mNewsAdapter);
+                            mTextNoSubscriptions.setVisibility(View.GONE);
+                        } else {
+                            mNews.setVisibility(View.GONE);
+                            mTextNoSubscriptions.setVisibility(View.VISIBLE);
+                        }
                     }
                 });
             }
+
         } catch (Exception ex) {
             Log.e("Exception", "Error", ex);
         }

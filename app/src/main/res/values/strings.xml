@@ -96,5 +96,9 @@
     <string name="news_sneaker_freaker">Sneaker Freaker</string>
     <string name="news_sneaker_files">Sneaker Files</string>
     <string name="news_modern_notoriety">Modern Notoriety</string>
+    <string name="news_no_subscription">
+        It looks like, you haven\t subscribed to any RSS Feed yet.
+        Try to add some Feeds through the Toolbar at the top!
+    </string>
 
 </resources>
