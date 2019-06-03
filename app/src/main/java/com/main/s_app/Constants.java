@@ -36,15 +36,21 @@ class Constants {
     static final String NICE_KICKS = "Nice Kicks";
     static final String FINISH_LINE = "Finish Line";
     static final String SNEAKER_FREAKER = "Sneaker Freaker";
+    static final String SNEAKER_FILES = "Sneaker Files";
+    static final String MODERN_NOTORIETY = "Modern Notoriety";
 
-    static final String URL_SOLE_COLLECTOR = "https://solecollector.com/feeds/generator/e/r/1.rss";
-    static final String URL_NICE_KICKS = "https://www.nicekicks.com/feed/";
-    static final String URL_FINISH_LINE = "https://blog.finishline.com/feed/";
+    private static final String URL_SOLE_COLLECTOR = "https://solecollector.com/feeds/generator/e/r/1.rss";
+    private static final String URL_NICE_KICKS = "https://www.nicekicks.com/feed/";
+    private static final String URL_FINISH_LINE = "https://blog.finishline.com/feed/";
+    private static final String URL_SNEAKER_FREAKER = "https://www.sneakerfreaker.com/feed";
+    private static final String URL_SNEAKER_FILES = "https://www.sneakerfiles.com/feed/";
+    private static final String URL_MODERN_NOTORIETY = "https://www.modern-notoriety.com/feed/";
 
     static String [] getSharedPreferencesKeys() {
         return new String [] {
                 SOLE_COLLECTOR, NICE_KICKS,
-                FINISH_LINE, SNEAKER_FREAKER
+                FINISH_LINE, SNEAKER_FREAKER,
+                SNEAKER_FILES, MODERN_NOTORIETY
         };
     }
 
@@ -56,6 +62,12 @@ class Constants {
                 return URL_NICE_KICKS;
             case FINISH_LINE:
                 return URL_FINISH_LINE;
+            case SNEAKER_FREAKER:
+                return URL_SNEAKER_FREAKER;
+            case SNEAKER_FILES:
+                return URL_SNEAKER_FILES;
+            case MODERN_NOTORIETY:
+                return URL_MODERN_NOTORIETY;
             default:
                 return "";
         }

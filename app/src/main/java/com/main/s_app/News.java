@@ -70,12 +70,6 @@ public class News extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View myView = inflater.inflate(R.layout.fragment_news, container, false);
 
-        if(getActivity() != null) {
-            sharedPreferences = getActivity().getSharedPreferences(Constants.PREFERENCE_KEY, Context.MODE_PRIVATE);
-        }
-
-        boolean soleCollector = sharedPreferences.getBoolean(Constants.SOLE_COLLECTOR, true);
-
         mToolbar = myView.findViewById(R.id.toolbar_news);
         mProgressBar = myView.findViewById(R.id.news_loading_spinner);
 
@@ -83,13 +77,11 @@ public class News extends Fragment {
         mNews.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         if(getActivity() != null) { //Parent Activity is available
+            sharedPreferences = getActivity().getSharedPreferences(Constants.PREFERENCE_KEY, Context.MODE_PRIVATE);
             ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar); //Set Toolbar
         }
 
         setHasOptionsMenu(true);
-
-        //String [] urls = getUrlsByPreferences();
-        //new RssFeedBackgroundHandler().execute(urls);
 
         return myView;
     }

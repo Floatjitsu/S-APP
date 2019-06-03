@@ -15,7 +15,8 @@ public class ManageRssFeed extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
-    CheckedTextView mSoleCollector, mNiceKicks, mFinishLine;
+    CheckedTextView mSoleCollector, mNiceKicks, mFinishLine,
+                    mSneakerFreaker, mSneakerFiles, mModernNotoriety;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,9 @@ public class ManageRssFeed extends AppCompatActivity {
         mSoleCollector = findViewById(R.id.check_sole_collector);
         mNiceKicks = findViewById(R.id.check_nice_kicks);
         mFinishLine = findViewById(R.id.check_finish_line);
+        mSneakerFreaker = findViewById(R.id.check_sneaker_freaker);
+        mSneakerFiles = findViewById(R.id.check_sneaker_files);
+        mModernNotoriety = findViewById(R.id.check_modern_notoriety);
 
         sharedPreferences = getSharedPreferences(Constants.PREFERENCE_KEY, Context.MODE_PRIVATE);
 
@@ -58,6 +62,15 @@ public class ManageRssFeed extends AppCompatActivity {
                         break;
                     case Constants.NICE_KICKS:
                         mNiceKicks.setCheckMarkDrawable(R.drawable.ic_check_circle_black_24dp);
+                        break;
+                    case Constants.SNEAKER_FREAKER:
+                        mSneakerFreaker.setCheckMarkDrawable(R.drawable.ic_check_circle_black_24dp);
+                        break;
+                    case Constants.SNEAKER_FILES:
+                        mSneakerFiles.setCheckMarkDrawable(R.drawable.ic_check_circle_black_24dp);
+                        break;
+                    case Constants.MODERN_NOTORIETY:
+                        mModernNotoriety.setCheckMarkDrawable(R.drawable.ic_check_circle_black_24dp);
                         break;
                 }
             }
