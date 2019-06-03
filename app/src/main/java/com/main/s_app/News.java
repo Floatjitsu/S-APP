@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -160,7 +161,7 @@ public class News extends Fragment {
             }
 
         } catch (Exception ex) {
-            Log.e("Exception", "Error", ex);
+            Toast.makeText(getActivity(), "Error while parsing RSS Information", Toast.LENGTH_SHORT).show();
         }
 
     }
