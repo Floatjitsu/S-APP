@@ -19,10 +19,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".PostComments"></activity>
+        <activity android:name=".ManageRssFeed"></activity>
+        <activity android:name=".PostComments" />
         <activity
             android:name=".CreatePostActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" />

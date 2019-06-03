@@ -5,8 +5,7 @@
     <item
         android:id="@+id/manage_news_feed"
         android:title="@string/manage_news_feed"
-        android:icon="@drawable/ic_more_vert_black_24dp"
-        android:iconTint="@color/design_default_color_primary_dark"
-        app:showAsAction="collapseActionView"/>
+        android:icon="@drawable/ic_filter_list_black_24dp"
+        app:showAsAction="always"/>
 
 </menu>

@@ -24,4 +24,12 @@
         android:layout_below="@+id/toolbar_news"
         android:layout_marginBottom="50dp"/>
 
+    <ProgressBar
+        android:id="@+id/news_loading_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/rv_news"/>
+
 </RelativeLayout>

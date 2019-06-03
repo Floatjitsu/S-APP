@@ -242,7 +242,7 @@ public class ForumAdapter extends RecyclerView.Adapter {
                 public void onPos(SourceContent sourceContent, boolean b) {
                     urlDescription.setText(sourceContent.getDescription());
                     //Save the download path from the image as contentDescription
-                    urlImage.setContentDescription(sourceContent.getImages().get(0));
+                    //urlImage.setContentDescription(sourceContent.getImages().get(0));
                     GlideApp.with(mActivityContext).load(sourceContent.getImages().get(0)).into(urlImage);
                 }
             };

@@ -84,4 +84,15 @@
     <string name="nothing_found">No Sneaker releases for the selected date found</string>
     <string name="sneaker_add_to_calendar">Add sneaker release to calendar</string>
 
+    <!-- News -->
+    <string name="news_title">News Title</string>
+    <string name="news_description">News Description</string>
+    <string name="news_image">News Image</string>
+    <string name="news_url">News URL</string>
+    <string name="news_manage_rss_feed">Your RSS Feed Subscriptions</string>
+    <string name="news_sole_collector">Sole Collector</string>
+    <string name="news_nice_kicks">Nice Kicks</string>
+    <string name="news_finish_line">Finish Line</string>
+    <string name="news_sneaker_freaker">Sneaker Freaker</string>
+
 </resources>
