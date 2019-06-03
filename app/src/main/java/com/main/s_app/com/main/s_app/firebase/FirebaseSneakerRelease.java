@@ -57,8 +57,4 @@ public class FirebaseSneakerRelease {
                     }
                 });
     }
-
-    public void addReleaseToFirebase(Sneaker sneaker) {
-        mDatabase.getReference(SNEAKER_PATH).push().setValue(sneaker);
-    }
 }

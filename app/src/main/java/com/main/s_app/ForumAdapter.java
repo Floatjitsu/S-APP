@@ -2,8 +2,6 @@ package com.main.s_app;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -205,7 +203,6 @@ public class ForumAdapter extends RecyclerView.Adapter {
         TextView linkPostTitle, linkPostDescription, linkPostPostedBy, linkPostDate, linkPostId,
                     linkPostUrl, linkPostCommentCount;
         ImageView linkPostImage;
-        final String imagePath = "";
 
         LinkPostHolder(@NonNull View itemView) {
             super(itemView);

@@ -8,7 +8,7 @@ public class Comment {
 
     public Comment() {}
 
-    public Comment(String comment, User user, long timeStamp) {
+    Comment(String comment, User user, long timeStamp) {
         this.comment = comment;
         this.user = user;
         this.timeStamp = timeStamp;

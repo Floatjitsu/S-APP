@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.main.s_app.com.main.s_app.firebase.Comment;
-import com.main.s_app.com.main.s_app.firebase.Post;
 
 import java.util.ArrayList;
 import java.util.Calendar;

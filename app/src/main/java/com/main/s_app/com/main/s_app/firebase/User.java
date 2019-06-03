@@ -20,10 +20,6 @@ public class User {
         this.username = username;
     }
 
-    public String getuId() {
-        return uId;
-    }
-
     public void setuId(String uId) {
         this.uId = uId;
     }
@@ -32,31 +28,7 @@ public class User {
         return emailAddress;
     }
 
-    public void setEmailAdress(String emailAdress) {
-        this.emailAddress = emailAdress;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
     public String getUsername() {
         return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 }

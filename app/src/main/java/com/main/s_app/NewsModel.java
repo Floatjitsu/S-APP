@@ -1,11 +1,8 @@
 package com.main.s_app;
 
-import android.graphics.Bitmap;
-
 public class NewsModel {
 
     private String newsTitle, newsUrl, newsDate, newsDesc, newsProvider;
-    private Bitmap newsImage;
 
     public NewsModel() {}
 
@@ -21,15 +18,7 @@ public class NewsModel {
         this.newsDesc = newsDesc;
     }
 
-    public Bitmap getNewsImage() {
-        return newsImage;
-    }
-
-    public void setNewsImage(Bitmap newsImage) {
-        this.newsImage = newsImage;
-    }
-
-    public String getNewsProvider() {
+    String getNewsProvider() {
         return newsProvider;
     }
 
@@ -37,31 +26,15 @@ public class NewsModel {
         return newsDesc;
     }
 
-    public void setNewsDesc(String newsDesc) {
-        this.newsDesc = newsDesc;
-    }
-
     String getNewsTitle() {
         return newsTitle;
-    }
-
-    public void setNewsTitle(String newsTitle) {
-        this.newsTitle = newsTitle;
     }
 
     String getNewsUrl() {
         return newsUrl;
     }
 
-    public void setNewsUrl(String newsUrl) {
-        this.newsUrl = newsUrl;
-    }
-
-    public String getNewsDate() {
+    String getNewsDate() {
         return newsDate;
-    }
-
-    public void setNewsDate(String newsDate) {
-        this.newsDate = newsDate;
     }
 }

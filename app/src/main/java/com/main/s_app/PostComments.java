@@ -21,15 +21,11 @@ import android.widget.TextView;
 
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.main.s_app.com.main.s_app.firebase.Comment;
 import com.main.s_app.com.main.s_app.firebase.FirebaseForum;
 import com.main.s_app.com.main.s_app.firebase.ImagePost;
 import com.main.s_app.com.main.s_app.firebase.LinkPost;
 import com.main.s_app.com.main.s_app.firebase.TextPost;
-import com.main.s_app.com.main.s_app.firebase.User;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.Objects;
 
 public class PostComments extends AppCompatActivity {
